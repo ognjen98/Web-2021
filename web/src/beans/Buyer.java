@@ -1,5 +1,6 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Buyer extends User{
@@ -19,6 +20,12 @@ public class Buyer extends User{
 		this.basket = basket;
 		this.points = points;
 		this.buyerType = buyerType;
+	}
+	
+	public Buyer(String username, String password, String name, String surname, Gender gender, Role role) {
+		super(username, password, name, surname, gender, role);
+		this.orders = new ArrayList<Order>();
+		this.basket = new Basket();
 	}
 
 	public List<Order> getOrders() {
