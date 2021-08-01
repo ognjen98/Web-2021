@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/registration.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+            <ul class="navbar-nav navbar-ul">
+                <li class="navbar-brand">
+                    <a href="#" class=" navbar-brand-custom">Booking</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto navbar-ul" id="navbarUl">
+
+            </ul>
+        </nav>
+        <div id="LoginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm" action="#" method="POST">
+                            <div class="form-group modal-form-input" id="emailInput">
+                                <input type="text" class="form-control" placeholder="Username" id="loginUsername">
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control" placeholder="Password" id="loginPassword">
+                                <p class="error-messages" id="loginErrorMessage"></p>
+                            </div>
+                            <button type="submit" class="btn btn-primary " id="btnLogin">Login</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="SignUpModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Sign up</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="registerForm">
+                            <div class="form-group modal-form-input" id="nameInput">
+                                <input type="text" class="form-control sign-up-input" placeholder="Username"
+                                    id="username">
+                                <p class="error-messages" id="usernameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="First name"
+                                    id="name">
+                                <p class="error-messages" id="nameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="Last name"
+                                    id="surname">
+                                <p class="error-messages" id="surnameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                    id="password">
+                                <p class="error-messages" id="passwordErrorMessage"></p>
+
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                    id="passwordControl">
+                                <p class="error-messages" id="passwordControlErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input-selection">
+                                <select class="form-control" id="gender">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary " id="btnSignUp">Sign up</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+        <!--<form action="#" style="padding-top: 100px;" id="form">
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-4">
+                        <input class="search-input-custom" type="text" placeholder="Dje idete?" name="destination">
+                    </div>
+                    <div class="col">
+                        <div class="input-daterange input-group" id="datepicker" style="height: 100%;">
+                            <input type="text" class="input-sm form-control date-picker-input-custom" name="startDate"
+                                placeholder="Dolazak" />
+                            <input type=" text" class="input-sm form-control date-picker-input-custom" name="endDate"
+                                placeholder="Odlazak" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input class="search-input-custom" type="text" placeholder="Cena" name="price">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" id="btnSubmit">Potvrdi</button>
+                    </div>
+                    <div class="col">
+                        <p id="test1">Ddadad </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </form>
+    -->
+
+        <div class="container" style="margin-top:100px">
+            <div class="row">
+                <div class="col-3" style="margin-left:43vw">
+                    <select class="form-control" id="sort">
+                        <option value="1">Sort...</option>
+                        <option value="1">Price: low to high</option>
+                        <option value="2">Price: high to low</option>
+                        <option value="3">Guests: low to high</option>
+                        <option value="4">Guests: high to low</option>
+                        <option value="5">Rooms: low to high</option>
+                        <option value="6">Rooms: high to low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 20px">
+            <div class="col-4 " style="padding-right: 20px; padding-left: 160px;">
+
+                <div class="card text-white mb-3 card-custom"
+                    style="max-width: 18rem; background-color: #febb02; border-radius: 10px;">
+                    <div class="card-body">
+                        <form name="searchForm" action="#" method="POST">
+                            <div class="container">
+                                <div class="row div-search-labels">
+                                    <p class="search-labels">Place:</p>
+                                </div>
+                                <div class="row">
+                                    <input type="text" class="form-control" style="width: 100%; padding: 0; border: 0;"
+                                        name="place">
+                                </div>
+                                <div class="row">
+                                    <div class="input-daterange" id="datepicker">
+
+                                        <div class="row div-search-labels">
+                                            <p class="search-labels">Check-in date:</p>
+                                        </div>
+                                        <div class="row">
+                                            <input type="text"
+                                                class="input-sm form-control date-picker-input-custom float-left" autocomplete="off"
+                                                name="startDate" placeholder="mm/dd/yyyy" />
+                                        </div>
+                                        <div class="row div-search-labels">
+                                            <p class="search-labels">Check-out date:</p>
+                                        </div>
+                                        <div class="row">
+                                            <input type=" text" class="input-sm form-control date-picker-input-custom" autocomplete="off"
+                                                name="endDate" placeholder="mm/dd/yyyy" />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row div-search-labels">
+                                    <p class="search-labels">Min price:</p>
+                                </div>
+                                <div class="row">
+                                    <input type="text" class="form-control" style="width: 100%; padding: 0; border: 0;" autocomplete="off"
+                                        name="minPrice">
+
+                                </div>
+
+                                <div class="row div-search-labels">
+                                    <p class="search-labels">Max price:</p>
+                                </div>
+                                <div class="row">
+                                    <input type="text" class="form-control" style="width: 100%; padding: 0; border: 0;" autocomplete="off"
+                                        name="maxPrice">
+                                </div>
+
+                                <div class="row div-search-labels">
+                                    <p class="search-labels">Number of rooms:</p>
+                                </div>
+                                <div class="row">
+                                    <input type="text" class="form-control" style="width: 100%; padding: 0; border: 0;" autocomplete="off"
+                                        name="rooms">
+                                </div>
+
+                                <div class="row div-search-labels">
+                                    <p class="search-labels">Number of guests:</p>
+                                </div>
+                                <div class="row">
+                                    <input type="text" class="form-control" style="width: 100%; padding: 0; border: 0;" autocomplete="off"
+                                        name="guests">
+                                </div>
+
+                                <div class="row" style="padding-top: 10px;">
+
+                                    <button type="submit" class="btn btn-primary" id="btnSubmit">Search</button>
+                                    <button type="button" class="btn btn-primary" id="btnCancel" style="margin-left:70px">Reset</button>
+
+                                </div>
+
+
+                            </div>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="col-8" id="apartmentsCol">
+
+                <!--<div class="card card-custom card-custom-apartment" style="width: 50rem; margin-top: 100px;">
+                    <div class="row no-gutters" style="border-radius: 25px;">
+                        <div class="col-sm-5" style="border-top-left-radius: 25px; border-bottom-left-radius: 25px;"
+                            style="background: #868e96;">
+                            <img src="proba/1.jpg"
+                                style="border-top-left-radius: 25px; border-bottom-left-radius: 25px;"
+                                class="card-img-top h-100" alt="...">
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h4 class="card-title">Ovde Ide Mesto</h4>
+                                <h5>Milosa crnjanskog 8</h5>
+                                <p class="card-text" style="color: #868e96;">232332,32322</p>
+                                <p class="card-text">Number of rooms: </p>
+                                <p class="card-text">Number of guests: </p>
+                                <h3 class="card-text" style="margin-left: 350px;">800e</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://www.facebook.com/" class="stretched-link"></a>
+                </div>
+                
+            </div>-->
+        </div>
+
+
+
+        <!--<div class="d-flex justify-content-center">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </div>
+    -->
+
+
+
+    </main>
+
+
+
+
+    <footer>
+
+
+
+
+    </footer>
+</body>
+
+
+</html>
