@@ -1,0 +1,150 @@
+.navbar-custom {
+    background-color: #0099ff;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 55px;
+}
+
+
+.navbar-brand-custom {
+    font-size: 20px;
+    color: white;
+}
+
+.navbar-brand-custom:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-nav {
+    float: left;
+}
+
+.navbar-ul {
+    height: 100%;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.nav-item-custom {
+    width: 120px;
+    color: white;
+}
+
+.navbar-btn-custom {
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background-color: #0099ff;
+    font-size: medium;
+    width: 100%;
+}
+
+.navbar-btn-custom:focus {
+    box-shadow: none !important;
+    outline: 0;
+    background-color: 0099ff;
+}
+
+.modal-form-input {
+    margin-bottom: 2rem;
+}
+
+.modal-form-input-selection {
+    margin-bottom: 3rem;
+}
+
+.login-form-button {
+    margin-left: auto;
+}
+
+
+.nav-link-custom {
+	font-size: medium;
+	color: white;
+	text-decoration: none;
+}
+
+.nav-link-custom:hover {
+	
+	text-decoration: none;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+.custom {
+    border: 3px solid;
+}
+
+.row {
+    margin: 0;
+}
+
+.col-4 {
+    padding: 0;
+}
+
+.col {
+    padding: 0;
+}
+
+.date-picker-input-custom {
+    border: 0;
+}
+
+.date-picker-input-custom:focus {
+    box-shadow: none !important;
+    outline: 0;
+    background-color: 0099ff;
+    border: 0;
+}
+
+.search-input-custom {
+    width: 100%;
+    height: 38px;
+    font-size: 1rem;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item:hover {
+    background-color: white;
+}
+
+.card-custom-apartment {
+    margin-bottom: 20px;
+    border-radius: 25px;
+}
+
+.div-search-labels {
+    height: 24px;
+}
+
+.search-labels {
+    color: black;
+}
+
+.search-row-custom {
+    margin-top: 20px;
+}
+
+.card-custom-apartment:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.error-messages {
+    color: red;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+
+.form-button-submit {
+    margin-top: 5px;
+    background-color: #0099ff;
+}
