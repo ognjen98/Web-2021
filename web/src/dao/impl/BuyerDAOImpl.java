@@ -16,11 +16,12 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Buyer;
+import dao.cruddao.BuyerDAO;
 import dao.cruddao.CRUDDao;
 
-public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
+public class BuyerDAOImpl implements BuyerDAO{
 
-	private HashMap<String, Buyer> buyers;
+	private HashMap<Integer, Buyer> buyers = new HashMap<Integer, Buyer>();
 	private String contextPath;
 	
 	public BuyerDAOImpl() {
@@ -29,8 +30,9 @@ public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
 	
 	public BuyerDAOImpl(String contextPath) {
 		this.contextPath = contextPath;
-		loadGuests(contextPath);
+		loadBuyers(contextPath);
 	}
+	
 	@Override
 	public int count() {
 		ArrayList<Buyer> guesList = new ArrayList<Buyer>(findAll());
@@ -39,20 +41,29 @@ public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
 
 	@Override
 	public boolean add(Buyer entity) {
-		if(existsById(entity.getUsername())) {
+		if(existsById(entity.getId())) {
 			return false;
 		}
-		buyers.put(entity.getUsername(), entity);
+		int length = buyers.keySet().size();
+		if(length == 0) {
+			entity.setId(1);
+			buyers.put(1, entity);
+		}
+		else {
+			int nextId = ++length;
+			entity.setId(nextId);
+			buyers.put(nextId, entity);
+		}
 		save();
 		return true;
 	}
 
 	@Override
 	public boolean update(Buyer entity) {
-		if(!existsById(entity.getUsername())) {
+		if(!existsById(entity.getId())) {
 			return false;
 		}
-		buyers.put(entity.getUsername(), entity);
+		buyers.put(entity.getId(), entity);
 		save();
 		return true;
 	}
@@ -63,20 +74,16 @@ public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
 		return false;
 	}
 
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	@Override
-	public boolean deleteById(String id) {
+	public boolean deleteById(Integer id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean existsById(String id) {
+	public boolean existsById(Integer id) {
 		return buyers.containsKey(id);
 	}
 
@@ -88,23 +95,25 @@ public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
 
 	@Override
 	public Collection<Buyer> findAll() {
-		loadGuests(contextPath);;
+		loadBuyers(contextPath);
+		
 		Collection<Buyer> guestList = buyers.values();
+		System.out.println(guestList);
 		return guestList;
 	}
 
 	@Override
-	public Buyer findById(String id) {
+	public Buyer findById(Integer id) {
 		return buyers.get(id);
 	}
 
 	@Override
 	public boolean save() {
 		ObjectMapper mapper = new ObjectMapper();
-		File file = new File(contextPath + File.separator + "data" + File.separator + "buyers.json");
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "buyers.json");
 	
 		try {
-			mapper.writeValue(file, buyers);
+			mapper.writerWithDefaultPrettyPrinter().writeValue(file, buyers);
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,9 +133,9 @@ public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
 		return false;
 	}
 	
-	private void loadGuests(String contextPath) {
+	private void loadBuyers(String contextPath) {
 		BufferedReader in = null;
-		File file = new File(contextPath + File.separator + "data" + File.separator + "buyers.json");
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "buyers.json");
 		ObjectMapper mapper = new ObjectMapper();
 		TypeReference<HashMap<String,Buyer>> typeRef 
         = new TypeReference<HashMap<String,Buyer>>() {};
@@ -140,6 +149,8 @@ public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
 		
 		try {
 			buyers = mapper.readValue(in, typeRef);
+			
+			
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -152,5 +163,11 @@ public class BuyerDAOImpl implements CRUDDao<Buyer, String>{
 		}
 		
 	
+	}
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		
 	}
 }

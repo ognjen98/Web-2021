@@ -4,10 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -15,12 +21,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import beans.User;
 import dao.cruddao.UserDAO;
 
+
 public class UserDAOImpl implements UserDAO{
 
-	private HashMap<String, User> users;
+//	@JsonSerialize(keyUsing = UserSerializer.class) 
+	private HashMap<Integer, User> users = new HashMap<Integer, User>();
 	private String contextPath;
 	
 	public UserDAOImpl() {
@@ -40,22 +49,31 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public boolean add(User entity) {
-		loadUsers(contextPath);
-		if(existsById(entity.getUsername())) {
+//		loadUsers(contextPath);
+		if(existsById(entity.getId())) {
 			return false;
 		}
-		users.put(entity.getUsername(), entity);
+		int length = users.keySet().size();
+		if(length == 0) {
+			entity.setId(1);
+			users.put(1, entity);
+		}
+		else {
+			int nextId = ++length;
+			entity.setId(nextId);
+			users.put(nextId, entity);
+		}
 		save();
 		return true;
 	}
 
 	@Override
 	public boolean update(User entity) {
-		loadUsers(contextPath);
-		if(!existsById(entity.getUsername())) {
+//		loadUsers(contextPath);
+		if(!existsById(entity.getId())) {
 			return false;
 		}
-		users.put(entity.getUsername(), entity);
+		users.put(entity.getId(), entity);
 		save();
 		return true;
 	}
@@ -68,20 +86,32 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
+		users.clear();
 
 	}
 
 	@Override
-	public boolean deleteById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteById(Integer id) {
+		users.remove(id);
+		save();
+		return true;
 	}
 
 	@Override
-	public boolean existsById(String id) {
+	public boolean existsById(Integer id) {
 		loadUsers(contextPath);
 		return users.containsKey(id);
+	}
+	
+	public boolean existsByUsername(String username) {
+		loadUsers(contextPath);
+		Collection<User> userList =  users.values();
+		for(User u : userList) {
+			if(u.getUsername().equals(username))
+				return true;
+		}
+		
+		return false;
 	}
 
 	@Override
@@ -98,7 +128,7 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public User findById(String id) {
+	public User findById(Integer id) {
 		loadUsers(contextPath);
 		return users.get(id);
 	}
@@ -106,10 +136,17 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public boolean save() {
 		ObjectMapper mapper = new ObjectMapper();
-		File file = new File(contextPath + File.separator + "data" + File.separator + "users.json");
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "users.json");
+		//JSONObject json = new JSONObject(users);
+		//JSONObject employeeDetails = new JSONObject();
 		
+//		JSONArray employeeList = (JSONArray) users
 		try {
-			mapper.writeValue(file, users);
+			mapper.writerWithDefaultPrettyPrinter().writeValue(file, users);
+//			f.write(result);
+//			f.flush();
+//			System.out.println(result);
+			//System.out.println(file);
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -131,8 +168,8 @@ public class UserDAOImpl implements UserDAO{
 	
 	private void loadUsers(String contextPath) {
 		BufferedReader in = null;
-		File file = new File(contextPath + File.separator + "data" + File.separator + "users.json");
-	
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "users.json");
+		//JSONParser jsonParser = new JSONParser();
 		ObjectMapper mapper = new ObjectMapper();
 		TypeReference<HashMap<String,User>> typeRef 
         = new TypeReference<HashMap<String,User>>() {};
@@ -146,6 +183,10 @@ public class UserDAOImpl implements UserDAO{
 		
 		try {
 			users = mapper.readValue(in, typeRef);
+//			for(String value : users.keySet()) {
+//				System.out.println("166-"+value);
+//			}
+			System.out.println("168-"+ users.get("cafilius2"));
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

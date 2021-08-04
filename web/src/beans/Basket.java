@@ -1,11 +1,12 @@
 package beans;
 
-import java.util.HashMap;
+
+import java.util.List;
 
 public class Basket {
 
 	private String id;
-	private HashMap<Article, Integer> articles;
+	private List<BasketItem> items;
 	private Buyer buyer;
 	private Double price;
 	
@@ -13,10 +14,10 @@ public class Basket {
 		super();
 	}
 
-	public Basket(String id, HashMap<Article, Integer> articles, Buyer buyer, Double price) {
+	public Basket(String id, List<BasketItem> items, Buyer buyer, Double price) {
 		super();
 		this.id = id;
-		this.articles = articles;
+		this.items = items;
 		this.buyer = buyer;
 		this.price = price;
 	}
@@ -29,12 +30,12 @@ public class Basket {
 		this.id = id;
 	}
 
-	public HashMap<Article, Integer> getArticles() {
-		return articles;
+	public List<BasketItem> getItems() {
+		return items;
 	}
 
-	public void setArticles(HashMap<Article, Integer> articles) {
-		this.articles = articles;
+	public void setItems(List<BasketItem> items) {
+		this.items = items;
 	}
 
 	public Buyer getBuyer() {
