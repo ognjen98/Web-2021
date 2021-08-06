@@ -132,6 +132,17 @@ public class UserDAOImpl implements UserDAO{
 		loadUsers(contextPath);
 		return users.get(id);
 	}
+	
+	@Override
+	public User findByUsername(String username) {
+		loadUsers(contextPath);
+		Collection<User> userList = users.values();
+		for(User u : userList) {
+			if(u.getUsername().equals(username))
+				return u;
+		}
+		return null;
+	}
 
 	@Override
 	public boolean save() {

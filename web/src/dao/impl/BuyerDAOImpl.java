@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import beans.Buyer;
+import beans.User;
 import dao.cruddao.BuyerDAO;
 import dao.cruddao.CRUDDao;
 
@@ -105,6 +106,17 @@ public class BuyerDAOImpl implements BuyerDAO{
 	@Override
 	public Buyer findById(Integer id) {
 		return buyers.get(id);
+	}
+	
+	@Override
+	public Buyer findByUsername(String username) {
+		loadBuyers(contextPath);
+		Collection<Buyer> buyerList = buyers.values();
+		for(Buyer b : buyerList) {
+			if(b.getUsername().equals(username))
+				return b;
+		}
+		return null;
 	}
 
 	@Override

@@ -1,0 +1,11 @@
+{
+	"1" : {
+	    "id" : 1,
+	    "username" : "cafiliu1",
+	    "password" : "ognjen98",
+	    "name" : "Ognjen",
+	    "surname" : "Civcic",
+	    "gender" : "MALE",
+	    "role" : "ADMIN"
+	}
+}
