@@ -1,3 +1,29 @@
 {
-
+  "1" : {
+    "id" : 1,
+    "username" : "cafiliu1",
+    "password" : "ognjen98",
+    "name" : "Ognjen",
+    "surname" : "Civcic",
+    "gender" : "MALE",
+    "role" : "ADMIN"
+  },
+  "2" : {
+    "id" : 2,
+    "username" : "markic",
+    "password" : "ognjen98",
+    "name" : "Ognjen",
+    "surname" : "DADD",
+    "gender" : "FEMALE",
+    "role" : "BUYER"
+  },
+  "3" : {
+    "id" : 3,
+    "username" : "pera",
+    "password" : "gio",
+    "name" : "Ognjen",
+    "surname" : "Civcic",
+    "gender" : "MALE",
+    "role" : "BUYER"
+  }
 }

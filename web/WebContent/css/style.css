@@ -1,23 +1,11 @@
 .navbar-custom {
-    background-color: #0099ff;
+    background-color: orange;
     padding-top: 0;
     padding-bottom: 0;
     height: 55px;
 }
 
-#loginBtn {
-	color: white;
-	background-color: #0099ff;
-    border: none;
-    outline: none;
-}
 
-#regBtn {
-	color: white;
-	background-color: #0099ff;
-    border: none;
-    outline: none;
-}
 
 .navbar-brand-custom {
     font-size: 20px;
@@ -50,7 +38,7 @@
     height: 100%;
     padding: 0;
     border: 0;
-    background-color: #0099ff;
+    background-color: orange;
     font-size: medium;
     width: 100%;
 }
