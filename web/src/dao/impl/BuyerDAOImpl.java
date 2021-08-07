@@ -22,7 +22,7 @@ import dao.cruddao.CRUDDao;
 
 public class BuyerDAOImpl implements BuyerDAO{
 
-	private HashMap<Integer, Buyer> buyers = new HashMap<Integer, Buyer>();
+	private HashMap<String, Buyer> buyers = new HashMap<String, Buyer>();
 	private String contextPath;
 	
 	public BuyerDAOImpl() {
@@ -42,18 +42,19 @@ public class BuyerDAOImpl implements BuyerDAO{
 
 	@Override
 	public boolean add(Buyer entity) {
-		if(existsById(entity.getId())) {
+		loadBuyers(contextPath);
+		if(existsById(entity.getId().toString())) {
 			return false;
 		}
 		int length = buyers.keySet().size();
 		if(length == 0) {
 			entity.setId(1);
-			buyers.put(1, entity);
+			buyers.put("1", entity);
 		}
 		else {
-			int nextId = ++length;
+			Integer nextId = ++length;
 			entity.setId(nextId);
-			buyers.put(nextId, entity);
+			buyers.put(nextId.toString(), entity);
 		}
 		save();
 		return true;
@@ -61,10 +62,11 @@ public class BuyerDAOImpl implements BuyerDAO{
 
 	@Override
 	public boolean update(Buyer entity) {
-		if(!existsById(entity.getId())) {
+		loadBuyers(contextPath);
+		if(!existsById(entity.getId().toString())) {
 			return false;
 		}
-		buyers.put(entity.getId(), entity);
+		buyers.put(entity.getId().toString(), entity);
 		save();
 		return true;
 	}
@@ -78,14 +80,26 @@ public class BuyerDAOImpl implements BuyerDAO{
 	
 
 	@Override
-	public boolean deleteById(Integer id) {
+	public boolean deleteById(String id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean existsById(Integer id) {
+	public boolean existsById(String id) {
+		loadBuyers(contextPath);
 		return buyers.containsKey(id);
+	}
+	
+	public boolean existsByUsername(String username) {
+		loadBuyers(contextPath);
+		Collection<Buyer> userList =  buyers.values();
+		for(User u : userList) {
+			if(u.getUsername().equals(username))
+				return true;
+		}
+		
+		return false;
 	}
 
 	@Override
@@ -104,7 +118,8 @@ public class BuyerDAOImpl implements BuyerDAO{
 	}
 
 	@Override
-	public Buyer findById(Integer id) {
+	public Buyer findById(String id) {
+		loadBuyers(contextPath);
 		return buyers.get(id);
 	}
 	

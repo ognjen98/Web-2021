@@ -29,7 +29,7 @@ import dao.cruddao.UserDAO;
 public class UserDAOImpl implements UserDAO{
 
 //	@JsonSerialize(keyUsing = UserSerializer.class) 
-	private HashMap<Integer, User> users = new HashMap<Integer, User>();
+	private HashMap<String, User> users = new HashMap<String, User>();
 	private String contextPath;
 	
 	public UserDAOImpl() {
@@ -49,19 +49,19 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public boolean add(User entity) {
-//		loadUsers(contextPath);
-		if(existsById(entity.getId())) {
+		loadUsers(contextPath);
+		if(existsById(entity.getId().toString())) {
 			return false;
 		}
 		int length = users.keySet().size();
 		if(length == 0) {
 			entity.setId(1);
-			users.put(1, entity);
+			users.put("1", entity);
 		}
 		else {
-			int nextId = ++length;
+			Integer nextId = ++length;
 			entity.setId(nextId);
-			users.put(nextId, entity);
+			users.put(nextId.toString(), entity);
 		}
 		save();
 		return true;
@@ -69,11 +69,11 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public boolean update(User entity) {
-//		loadUsers(contextPath);
-		if(!existsById(entity.getId())) {
+		loadUsers(contextPath);
+		if(!existsById(entity.getId().toString())) {
 			return false;
 		}
-		users.put(entity.getId(), entity);
+		users.put(entity.getId().toString(), entity);
 		save();
 		return true;
 	}
@@ -91,14 +91,14 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public boolean deleteById(Integer id) {
+	public boolean deleteById(String id) {
 		users.remove(id);
 		save();
 		return true;
 	}
 
 	@Override
-	public boolean existsById(Integer id) {
+	public boolean existsById(String id) {
 		loadUsers(contextPath);
 		return users.containsKey(id);
 	}
@@ -128,7 +128,7 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public User findById(Integer id) {
+	public User findById(String id) {
 		loadUsers(contextPath);
 		return users.get(id);
 	}
@@ -197,7 +197,7 @@ public class UserDAOImpl implements UserDAO{
 //			for(String value : users.keySet()) {
 //				System.out.println("166-"+value);
 //			}
-			System.out.println("168-"+ users.get("cafilius2"));
+			//System.out.println("168-"+ users.get("cafilius2"));
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
