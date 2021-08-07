@@ -29,11 +29,55 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto navbar-ul" id="navbarUl">
+                <li class="nav-item nav-item-custom">
+                    <button id="infoBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#infoModal">Personal info</button>
+                </li>
 				<li class="nav-item nav-item-custom">
                     <button id="logoutBtn" type="button" class="btn btn-primary navbar-btn-custom">Logout</button>
                 </li>
                
             </ul>
         </nav>
+
+        <div id="infoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Personal Info</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="infoForm">
+                            <div class="form-group modal-form-input" id="nameInput">
+                                <input type="text" class="form-control sign-up-input" placeholder="Username"
+                                    id="username">
+                                <p class="error-messages" id="usernameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="First name"
+                                    id="name">
+                                <p class="error-messages" id="nameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="Last name"
+                                    id="surname">
+                                <p class="error-messages" id="surnameErrorMessage"></p>
+                            </div>
+                            
+                            <div class="form-group modal-form-input-selection">
+                                <select class="form-control" id="gender">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary " id="btnInfo">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
 </body>
 </html>

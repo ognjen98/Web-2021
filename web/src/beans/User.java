@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 //@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
 //property = "id", scope = User.class)
 public class User {
-	private int id;
+	private Integer id;
 	private String username;
 	private String password;
 	private String name;
@@ -18,7 +18,7 @@ public class User {
 		super();
 	}
 	
-	public User(int id, String username, String password, String name, String surname, Gender gender, Role role) {
+	public User(Integer id, String username, String password, String name, String surname, Gender gender, Role role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -39,11 +39,11 @@ public class User {
 		this.role = role;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
