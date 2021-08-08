@@ -1,5 +1,8 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 import beans.Buyer;
 import beans.Gender;
+import beans.Role;
 import beans.User;
 import dao.impl.BuyerDAOImpl;
 import dao.impl.UserDAOImpl;
@@ -112,5 +116,24 @@ public class UserService {
 			return user;
 		}
 		return null;
+	}
+	
+	
+	@GET
+	@Path("getAllUsers")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Collection<User> getAllUsers(){
+		UserDAOImpl userDAO = (UserDAOImpl) ctx.getAttribute("userDAO");
+		Collection<User> users = userDAO.findAll();
+		Collection<User> notAdmins = new ArrayList<User>();
+		
+		for(User u: users) {
+			System.out.println(u.getName());
+			if(!u.getRole().equals(Role.ADMIN)) {
+				notAdmins.add(u);
+				
+			}
+		}
+		return notAdmins;
 	}
 }

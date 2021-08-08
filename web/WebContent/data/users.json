@@ -12,7 +12,7 @@
     "id" : 2,
     "username" : "markic",
     "password" : "ognjen98",
-    "name" : "Ognjen",
+    "name" : "Filip",
     "surname" : "DADD",
     "gender" : "FEMALE",
     "role" : "BUYER"
@@ -21,7 +21,7 @@
     "id" : 3,
     "username" : "pera",
     "password" : "gio",
-    "name" : "Ognjen",
+    "name" : "Djura",
     "surname" : "Civcic",
     "gender" : "MALE",
     "role" : "BUYER"
