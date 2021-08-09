@@ -31,7 +31,7 @@ function logout() {
 }
 
 function getPersonalInfo(){
-    let username = $("#username");
+    
     let name = $("#name");
     let surname = $("#surname");
     let gender = $("#gender");
@@ -40,7 +40,7 @@ function getPersonalInfo(){
         type: "GET",
         url: "rest/user/getInfo",
         success: function (getInfo, textStatus, XMLHttpRequest) {
-            username.val(getInfo.username);
+            
             name.val(getInfo.name);
             surname.val(getInfo.surname);
             if(getInfo.gender === "MALE")
@@ -55,13 +55,9 @@ function getPersonalInfo(){
 }
 
 function changeInfo(){
-    // let username = $("#username").val();
-    // let name = $("#name").val();
-    // let surname = $("#surname").val();
-    // let gender = $("#gender").val();
 
     let submitInfo = {
-        username: $("#username").val(),
+        
         name: $("#name").val(),
         surname: $("#surname").val(),
         gender: $("#gender").val(),

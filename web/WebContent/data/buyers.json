@@ -1,28 +1,9 @@
 {
-  "2" : {
-    "id" : 2,
-    "username" : "markic",
-    "password" : "ognjen98",
-    "name" : "Filip",
-    "surname" : "DADD",
-    "gender" : "FEMALE",
-    "role" : "BUYER",
-    "orders" : [ ],
-    "basket" : {
-      "id" : null,
-      "items" : null,
-      "buyer" : null,
-      "price" : null
-    },
-    "points" : null,
-    "buyerType" : null
-  },
-  "3" : {
-    "id" : 3,
-    "username" : "pera",
-    "password" : "gio",
-    "name" : "Djura",
-    "surname" : "Civcic",
+  "user" : {
+    "username" : "user",
+    "password" : "123",
+    "name" : "Gadwdad",
+    "surname" : "asdadad",
     "gender" : "MALE",
     "role" : "BUYER",
     "orders" : [ ],

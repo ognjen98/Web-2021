@@ -31,12 +31,73 @@
                 <li class="nav-item nav-item-custom">
                     <button id="usersBtn" type="button" class="btn btn-primary navbar-btn-custom">Users</button>
                 </li>
+                <li class="nav-item nav-item-custom">
+                    <button id="managerSupplierBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#userModal">Manager & Suppier</button>
+                </li>
 				<li class="nav-item nav-item-custom">
                     <button id="logoutBtn" type="button" class="btn btn-primary navbar-btn-custom">Logout</button>
                 </li>
                 
             </ul>
         </nav>
+
+        <div id="userModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Create manager/supplier</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="createForm">
+                            <div class="form-group modal-form-input-selection">
+                                <select class="form-control" id="role">
+                                    <option value="1">Manager</option>
+                                    <option value="2">Supplier</option>
+                                </select>
+                            </div>
+                            <div class="form-group modal-form-input" id="nameInput">
+                                <input type="text" class="form-control sign-up-input" placeholder="Username"
+                                    id="username">
+                                <p class="error-messages" id="usernameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="First name"
+                                    id="name">
+                                <p class="error-messages" id="nameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="Last name"
+                                    id="surname">
+                                <p class="error-messages" id="surnameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                    id="password">
+                                <p class="error-messages" id="passwordErrorMessage"></p>
+
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                    id="passwordControl">
+                                <p class="error-messages" id="passwordControlErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input-selection">
+                                <select class="form-control" id="gender">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary " id="btnCreate">Sign up</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
 
         <table class="table" id="userTable">
 

@@ -1,0 +1,11 @@
+{
+  "supplier" : {
+    "username" : "supplier",
+    "password" : "123",
+    "name" : "sup",
+    "surname" : "susda",
+    "gender" : "FEMALE",
+    "role" : "SUPPLIER",
+    "orders" : [ ]
+  }
+}

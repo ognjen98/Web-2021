@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -22,7 +25,8 @@ import dao.cruddao.CRUDDao;
 
 public class BuyerDAOImpl implements BuyerDAO{
 
-	private HashMap<String, Buyer> buyers = new HashMap<String, Buyer>();
+	private Map<String, Buyer> buyers = new HashMap<String, Buyer>();
+	
 	private String contextPath;
 	
 	public BuyerDAOImpl() {
@@ -31,6 +35,7 @@ public class BuyerDAOImpl implements BuyerDAO{
 	
 	public BuyerDAOImpl(String contextPath) {
 		this.contextPath = contextPath;
+		
 		loadBuyers(contextPath);
 	}
 	
@@ -43,19 +48,11 @@ public class BuyerDAOImpl implements BuyerDAO{
 	@Override
 	public boolean add(Buyer entity) {
 		loadBuyers(contextPath);
-		if(existsById(entity.getId().toString())) {
+		if(existsById(entity.getUsername())) {
 			return false;
 		}
-		int length = buyers.keySet().size();
-		if(length == 0) {
-			entity.setId(1);
-			buyers.put("1", entity);
-		}
-		else {
-			Integer nextId = ++length;
-			entity.setId(nextId);
-			buyers.put(nextId.toString(), entity);
-		}
+		buyers.put(entity.getUsername(), entity);
+		
 		save();
 		return true;
 	}
@@ -63,10 +60,10 @@ public class BuyerDAOImpl implements BuyerDAO{
 	@Override
 	public boolean update(Buyer entity) {
 		loadBuyers(contextPath);
-		if(!existsById(entity.getId().toString())) {
+		if(!existsById(entity.getUsername())) {
 			return false;
 		}
-		buyers.put(entity.getId().toString(), entity);
+		buyers.put(entity.getUsername(), entity);
 		save();
 		return true;
 	}
@@ -191,6 +188,8 @@ public class BuyerDAOImpl implements BuyerDAO{
 		
 	
 	}
+	
+	
 
 	@Override
 	public void deleteAll() {
