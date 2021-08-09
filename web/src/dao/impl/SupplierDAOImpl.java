@@ -4,19 +4,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
-
-import org.json.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -24,84 +18,84 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
+import beans.Manager;
+import beans.Supplier;
 import beans.User;
-import dao.cruddao.UserDAO;
+import dao.cruddao.SupplierDAO;
 
+public class SupplierDAOImpl implements SupplierDAO{
 
-public class UserDAOImpl implements UserDAO{
+	private Map<String, Supplier> suppliers = new HashMap<String, Supplier>();
 
-//	@JsonSerialize(keyUsing = UserSerializer.class) 
-	private Map<String, User> users = new HashMap<String, User>();
 	private String contextPath;
 	
-	public UserDAOImpl() {
-		
+	public SupplierDAOImpl() {
+		// TODO Auto-generated constructor stub
 	}
 	
-	public UserDAOImpl(String contextPath) {
+	public SupplierDAOImpl(String contextPath) {
 		this.contextPath = contextPath;
-		loadUsers(contextPath);
+		loadSuppliers(contextPath);
 	}
 	
 	@Override
 	public int count() {
-		 ArrayList<User> userList = new ArrayList<User>(findAll());
+		 ArrayList<Supplier> userList = new ArrayList<Supplier>(findAll());
 		 return userList.size();
 	}
 
 	@Override
-	public boolean add(User entity) {
-		loadUsers(contextPath);
+	public boolean add(Supplier entity) {
+		loadSuppliers(contextPath);
 		if(existsById(entity.getUsername())) {
 			return false;
 		}
-		users.put(entity.getUsername(), entity);
-	
+		suppliers.put(entity.getUsername(), entity);
+		
 		save();
 		return true;
 	}
 
 	@Override
-	public boolean update(User entity) {
-		loadUsers(contextPath);
+	public boolean update(Supplier entity) {
+		loadSuppliers(contextPath);
 		if(!existsById(entity.getUsername())) {
 			return false;
 		}
-		users.put(entity.getUsername(), entity);
+		suppliers.put(entity.getUsername(), entity);
 		save();
 		return true;
 	}
 
 	@Override
-	public boolean delete(User entity) {
+	public boolean delete(Supplier entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void deleteAll() {
-		users.clear();
+		suppliers.clear();
 
 	}
 
 	@Override
 	public boolean deleteById(String id) {
-		users.remove(id);
+		suppliers.remove(id);
 		save();
 		return true;
 	}
 
 	@Override
 	public boolean existsById(String id) {
-		loadUsers(contextPath);
-		return users.containsKey(id);
+		loadSuppliers(contextPath);
+		return suppliers.containsKey(id);
 	}
 	
 	public boolean existsByUsername(String username) {
-		loadUsers(contextPath);
-		Collection<User> userList =  users.values();
-		for(User u : userList) {
+		loadSuppliers(contextPath);
+		Collection<Supplier> userList =  suppliers.values();
+		for(Supplier u : userList) {
 			if(u.getUsername().equals(username))
 				return true;
 		}
@@ -116,23 +110,23 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public Collection<User> findAll() {
-		loadUsers(contextPath);
-		Collection<User> userList = users.values();
+	public Collection<Supplier> findAll() {
+		loadSuppliers(contextPath);
+		Collection<Supplier> userList = suppliers.values();
 		return userList;
 	}
 
 	@Override
-	public User findById(String id) {
-		loadUsers(contextPath);
-		return users.get(id);
+	public Supplier findById(String id) {
+		loadSuppliers(contextPath);
+		return suppliers.get(id);
 	}
 	
 	@Override
-	public User findByUsername(String username) {
-		loadUsers(contextPath);
-		Collection<User> userList = users.values();
-		for(User u : userList) {
+	public Supplier findByUsername(String username) {
+		loadSuppliers(contextPath);
+		Collection<Supplier> userList = suppliers.values();
+		for(Supplier u : userList) {
 			if(u.getUsername().equals(username))
 				return u;
 		}
@@ -142,13 +136,13 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public boolean save() {
 		ObjectMapper mapper = new ObjectMapper();
-		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "users.json");
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "suppliers.json");
 		//JSONObject json = new JSONObject(users);
 		//JSONObject employeeDetails = new JSONObject();
 		
 //		JSONArray employeeList = (JSONArray) users
 		try {
-			mapper.writerWithDefaultPrettyPrinter().writeValue(file, users);
+			mapper.writerWithDefaultPrettyPrinter().writeValue(file, suppliers);
 //			f.write(result);
 //			f.flush();
 //			System.out.println(result);
@@ -167,18 +161,18 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public boolean saveAll(Collection<User> entities) {
+	public boolean saveAll(Collection<Supplier> entities) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
-	private void loadUsers(String contextPath) {
+	private void loadSuppliers(String contextPath) {
 		BufferedReader in = null;
-		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "users.json");
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "suppliers.json");
 		//JSONParser jsonParser = new JSONParser();
 		ObjectMapper mapper = new ObjectMapper();
-		TypeReference<TreeMap<String,User>> typeRef 
-        = new TypeReference<TreeMap<String,User>>() {};
+		TypeReference<HashMap<String,User>> typeRef 
+        = new TypeReference<HashMap<String,User>>() {};
 
 		try {
 			in = new BufferedReader(new FileReader(file));
@@ -188,7 +182,7 @@ public class UserDAOImpl implements UserDAO{
 		}
 		
 		try {
-			users = mapper.readValue(in, typeRef);
+			suppliers = mapper.readValue(in, typeRef);
 //			for(String value : users.keySet()) {
 //				System.out.println("166-"+value);
 //			}
@@ -206,4 +200,7 @@ public class UserDAOImpl implements UserDAO{
 		
 	
 	}
+	
+
+
 }

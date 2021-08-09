@@ -1,0 +1,19 @@
+{
+  "manager" : {
+    "username" : "manager",
+    "password" : "123",
+    "name" : "dada",
+    "surname" : "daawd",
+    "gender" : "OTHER",
+    "role" : "MANAGER",
+    "restaurant" : {
+      "id" : null,
+      "name" : null,
+      "type" : null,
+      "articles" : null,
+      "status" : null,
+      "location" : null,
+      "image" : null
+    }
+  }
+}

@@ -17,9 +17,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.Buyer;
+import beans.Manager;
 import beans.Role;
+import beans.Supplier;
 import beans.User;
 import dao.impl.BuyerDAOImpl;
+import dao.impl.ManagerDAOImpl;
+import dao.impl.SupplierDAOImpl;
 import dao.impl.UserDAOImpl;
 
 @Path("/registration")
@@ -45,6 +49,14 @@ public class RegistrationService {
 			String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("buyerDAO", new BuyerDAOImpl(contextPath));
 		}
+		if(ctx.getAttribute("managerDAO") == null) {
+			String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("managerDAO", new ManagerDAOImpl(contextPath));
+		}
+		if(ctx.getAttribute("supplierDAO") == null) {
+			String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("supplierDAO", new SupplierDAOImpl(contextPath));
+		}
 	}
 	
 	@POST
@@ -53,16 +65,47 @@ public class RegistrationService {
 	public Response registerUser(User user) {
 		UserDAOImpl userDAO = (UserDAOImpl) ctx.getAttribute("userDAO");
 		if(existsByUsername(user.getUsername())) {
-			return Response.status(Response.Status.BAD_REQUEST).entity("Korisnicko ime mora biti jedinstveno").build();
+			return Response.status(Response.Status.BAD_REQUEST).entity("User already exists").build();
 		}
 		user.setRole(Role.BUYER);
+		userDAO.add(user);
 		Buyer buyer = new Buyer(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
 		BuyerDAOImpl buyerDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
 		buyerDAO.add(buyer);
-		userDAO.add(user);
+		
 		request.getSession().setAttribute("loggedInUser", buyer);
 			
 		return Response.status(Response.Status.OK).entity("Successfully registered").build();
+	}
+	
+	@POST
+	@Path("/createManagerSupplier")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response createManagerSupplier(User user) {
+		UserDAOImpl userDAO = (UserDAOImpl) ctx.getAttribute("userDAO");
+		if(existsByUsername(user.getUsername())) {
+			return Response.status(Response.Status.BAD_REQUEST).entity("User already exists").build();
+		}
+		
+		if(user.getRole().equals(Role.MANAGER)) {
+			Manager manager = new Manager(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
+			ManagerDAOImpl managerDAO = (ManagerDAOImpl) ctx.getAttribute("managerDAO");
+			managerDAO.add(manager);
+			userDAO.add(user);
+			
+				
+			return Response.status(Response.Status.OK).entity("Manager successfully registered").build();
+		}
+		else if(user.getRole().equals(Role.SUPPLIER)) {
+			Supplier supplier = new Supplier(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
+			SupplierDAOImpl supplierDAO = (SupplierDAOImpl) ctx.getAttribute("supplierDAO");
+			supplierDAO.add(supplier);
+			userDAO.add(user);
+			
+				
+			return Response.status(Response.Status.OK).entity("Supplier successfully registered").build();
+		}
+		return Response.status(Response.Status.BAD_REQUEST).entity("Couldn't create manager or supplier!").build();
 	}
 	
 	@GET

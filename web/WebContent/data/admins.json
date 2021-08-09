@@ -1,11 +1,10 @@
 {
-	"1" : {
-	    "id" : 1,
-	    "username" : "cafiliu1",
-	    "password" : "ognjen98",
+	"admin" : {
+	    "username" : "admin",
+	    "password" : "123",
 	    "name" : "Ognjen",
-	    "surname" : "Civcic",
+	    "surname" : "asdadad",
 	    "gender" : "MALE",
 	    "role" : "ADMIN"
-	}
+  	}
 }

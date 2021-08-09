@@ -1,28 +1,33 @@
 {
-  "1" : {
-    "id" : 1,
-    "username" : "cafiliu1",
-    "password" : "ognjen98",
+  "admin" : {
+    "username" : "admin",
+    "password" : "123",
     "name" : "Ognjen",
-    "surname" : "Civcic",
+    "surname" : "asdadad",
     "gender" : "MALE",
     "role" : "ADMIN"
   },
-  "2" : {
-    "id" : 2,
-    "username" : "markic",
-    "password" : "ognjen98",
-    "name" : "Filip",
-    "surname" : "DADD",
-    "gender" : "FEMALE",
-    "role" : "BUYER"
+  "manager" : {
+    "username" : "manager",
+    "password" : "123",
+    "name" : "dada",
+    "surname" : "daawd",
+    "gender" : "OTHER",
+    "role" : "MANAGER"
   },
-  "3" : {
-    "id" : 3,
-    "username" : "pera",
-    "password" : "gio",
-    "name" : "Djura",
-    "surname" : "Civcic",
+  "supplier" : {
+    "username" : "supplier",
+    "password" : "123",
+    "name" : "sup",
+    "surname" : "susda",
+    "gender" : "FEMALE",
+    "role" : "SUPPLIER"
+  },
+  "user" : {
+    "username" : "user",
+    "password" : "123",
+    "name" : "Gadwdad",
+    "surname" : "asdadad",
     "gender" : "MALE",
     "role" : "BUYER"
   }
