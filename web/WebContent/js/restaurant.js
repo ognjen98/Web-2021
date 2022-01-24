@@ -17,12 +17,12 @@ $(document).ready(function () {
     
 	logout();
 	
-	$("#restaurantBtn").click(function(event){
-		event.stopImmediatePropagation();
-	       //getManagersWithoutRestaurants(resDiv);
-		createRestaurantForm(resDiv);
-	       
-	}) 
+//	$("#restaurantBtn").click(function(event){
+//		   //event.stopImmediatePropagation();
+//	       
+//	       
+//	}) 
+	getManagersWithoutRestaurants(resDiv);
 	createRestaurant();
 	
     $("#usersBtn").click(function(){
@@ -79,7 +79,7 @@ function createUserTable(userTable,getAll){
 function addRestaurant(resDiv){
    $("#restaurantBtn").click(function(event){
 	   //event.stopImmediatePropagation();
-       //getManagersWithoutRestaurants(resDiv);
+       getManagersWithoutRestaurants(resDiv);
        createRestaurant();
    }) 
 
@@ -122,9 +122,9 @@ function createRestaurant(){
     let logo = $("#logo");
     resForm.submit(function(event){
     	event.preventDefault();
-    	event.stopPropagation();
+    	//event.stopPropagation();
         resData = {
-        	//manager: $("#managerSelect").val(),
+        	manager: $("#managerSelect").val(),
         	resName: $("#resName").val(),
             location: $("#location").val(),
             type: ($("#type option:selected").text()).toUpperCase()
@@ -144,21 +144,21 @@ function createRestaurant(){
             contentType: false,
             data: formData,
             success: function (data) {
-              //alert($("#managerSelect").val());
+              alert($("#managerSelect").val());
     
+            },
+            failure: function(data){
+            	alert($("#managerSelect").val());
             }
-//            failure: function(data){
-//            	alert($("#managerSelect").val());
-//            }
         });
-//        return false
+       return false
     })
     
 }
 
 
 
-function createRestaurantForm(resDiv){
+function createRestaurantForm(resDiv,managers){
     
     
     
@@ -179,12 +179,12 @@ function createRestaurantForm(resDiv){
                         '</div><div class="form-group modal-form-input"><input type="file" id="logo"></div>' +   
                         '<button type="submit" class="btn btn-primary " id="btnRestaurant">Create</button> </form>')
 
-//   let managerSelect = $("#managerSelect");
-//   managerSelect.empty();
-//   managers.forEach(element => {
-//       console.log(element);
-//       managerSelect.append('<option value="' + element+'">'+element + '</option>')
-//   });
+   let managerSelect = $("#managerSelect");
+   managerSelect.empty();
+   managers.forEach(element => {
+       console.log(element);
+       managerSelect.append('<option value="' + element+'">'+element + '</option>')
+   });
     
     // for(let manager in managers){
     // 	console.log(managers);
@@ -198,7 +198,13 @@ function getManagersWithoutRestaurants(resDiv){
         type: "GET",
         url: "rest/restaurant/getManagers",
         success: function (managers) {
-        	createRestaurantForm(resDiv,managers)
+        	//createRestaurantForm(resDiv,managers)
+        	let managerSelect = $("#managerSelect");
+        	   managerSelect.empty();
+        	   managers.forEach(element => {
+        	       console.log(element);
+        	       managerSelect.append('<option value="' + element+'">'+element + '</option>')
+        	   });
         }
     })
 }

@@ -1,10 +1,29 @@
 {
+  "user2" : {
+    "username" : "user2",
+    "password" : "123",
+    "name" : "Sabo",
+    "surname" : "Milosevic",
+    "gender" : "FEMALE",
+    "dateOfBirth" : 1641942000000,
+    "role" : "BUYER",
+    "orders" : [ ],
+    "basket" : {
+      "id" : null,
+      "items" : null,
+      "buyer" : null,
+      "price" : null
+    },
+    "points" : null,
+    "buyerType" : null
+  },
   "user" : {
     "username" : "user",
     "password" : "123",
-    "name" : "Gadwdad",
-    "surname" : "asdadad",
+    "name" : "User",
+    "surname" : "Sasd",
     "gender" : "MALE",
+    "dateOfBirth" : 1641942000000,
     "role" : "BUYER",
     "orders" : [ ],
     "basket" : {

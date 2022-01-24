@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -11,19 +13,21 @@ public class User {
 	private String name;
 	private String surname;
 	private Gender gender;
+	private Date dateOfBirth;
 	private Role role;
 
 	public User() {
 		super();
 	}
 	
-	public User(String username, String password, String name, String surname, Gender gender, Role role) {
+	public User(String username, String password, String name, String surname, Gender gender, Date dateOfBirth, Role role) {
 		super();
-		this.username = username;
+		this.username = username; 
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.gender = gender;
+		this.dateOfBirth = dateOfBirth;
 		this.role = role;
 	}
 	
@@ -64,6 +68,14 @@ public class User {
 	}
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	
 

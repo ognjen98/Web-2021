@@ -4,16 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.NavigableMap;
 import java.util.TreeMap;
-
 
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -21,90 +17,86 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
+import beans.Restaurant;
 import beans.User;
-import dao.cruddao.UserDAO;
+import dao.cruddao.RestaurantDAO;
 
+public class RestaurantDAOImpl implements RestaurantDAO{
 
-public class UserDAOImpl implements UserDAO{
-
-//	@JsonSerialize(keyUsing = UserSerializer.class) 
-	private Map<String, User> users = new HashMap<String, User>();
+	private Map<String, Restaurant> restaurants = new HashMap<String, Restaurant>();
 	private String contextPath;
 	
-	public UserDAOImpl() {
+	public RestaurantDAOImpl() {
 		
 	}
 	
-	public UserDAOImpl(String contextPath) {
+	public RestaurantDAOImpl(String contextPath) {
 		this.contextPath = contextPath;
-		loadUsers(contextPath);
+		loadRestaurants(contextPath);
 	}
 	
 	@Override
 	public int count() {
-		 ArrayList<User> userList = new ArrayList<User>(findAll());
+		 ArrayList<Restaurant> userList = new ArrayList<Restaurant>(findAll());
 		 return userList.size();
 	}
 
 	@Override
-	public boolean add(User entity) {
-		loadUsers(contextPath);
-		if(existsById(entity.getUsername())) {
-			return false;
+	public boolean add(Restaurant entity) {
+		loadRestaurants(contextPath);
+		
+		Integer currId = restaurants.keySet().size();
+		if(currId == 0) {
+			entity.setId(1);
+			restaurants.put(entity.getId().toString(), entity);
 		}
-		users.put(entity.getUsername(), entity);
+		else {
+			Integer nextId = ++currId;
+			entity.setId(nextId);
+			restaurants.put(entity.getId().toString(), entity);
+			
+		}
 	
 		save();
 		return true;
 	}
 
 	@Override
-	public boolean update(User entity) {
-		loadUsers(contextPath);
-		if(!existsById(entity.getUsername())) {
+	public boolean update(Restaurant entity) {
+		loadRestaurants(contextPath);
+		if(!existsById(entity.getId().toString())) {
 			return false;
 		}
-		users.put(entity.getUsername(), entity);
+		restaurants.put(entity.getId().toString(), entity);
 		save();
 		return true;
 	}
 
 	@Override
-	public boolean delete(User entity) {
+	public boolean delete(Restaurant entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void deleteAll() {
-		users.clear();
+		restaurants.clear();
 
 	}
 
 	@Override
 	public boolean deleteById(String id) {
-		users.remove(id);
+		restaurants.remove(id);
 		save();
 		return true;
 	}
 
 	@Override
 	public boolean existsById(String id) {
-		loadUsers(contextPath);
-		return users.containsKey(id);
+		loadRestaurants(contextPath);
+		return restaurants.containsKey(id);
 	}
 	
-	public boolean existsByUsername(String username) {
-		loadUsers(contextPath);
-		Collection<User> userList =  users.values();
-		for(User u : userList) {
-			if(u.getUsername().equals(username))
-				return true;
-		}
-		
-		return false;
-	}
 
 	@Override
 	public boolean isDeleted(String id) {
@@ -113,39 +105,30 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public Collection<User> findAll() {
-		loadUsers(contextPath);
-		Collection<User> userList = users.values();
+	public Collection<Restaurant> findAll() {
+		loadRestaurants(contextPath);
+		Collection<Restaurant> userList = restaurants.values();
 		return userList;
 	}
 
 	@Override
-	public User findById(String id) {
-		loadUsers(contextPath);
-		return users.get(id);
+	public Restaurant findById(String id) {
+		loadRestaurants(contextPath);
+		return restaurants.get(id);
 	}
 	
-	@Override
-	public User findByUsername(String username) {
-		loadUsers(contextPath);
-		Collection<User> userList = users.values();
-		for(User u : userList) {
-			if(u.getUsername().equals(username))
-				return u;
-		}
-		return null;
-	}
+	
 
 	@Override
 	public boolean save() {
 		ObjectMapper mapper = new ObjectMapper();
-		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "users.json");
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "restaurants.json");
 		//JSONObject json = new JSONObject(users);
 		//JSONObject employeeDetails = new JSONObject();
 		
 //		JSONArray employeeList = (JSONArray) users
 		try {
-			mapper.writerWithDefaultPrettyPrinter().writeValue(file, users);
+			mapper.writerWithDefaultPrettyPrinter().writeValue(file, restaurants);
 //			f.write(result);
 //			f.flush();
 //			System.out.println(result);
@@ -164,18 +147,18 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public boolean saveAll(Collection<User> entities) {
+	public boolean saveAll(Collection<Restaurant> entities) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	
-	private void loadUsers(String contextPath) {
+	private void loadRestaurants(String contextPath) {
 		BufferedReader in = null;
-		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "users.json");
+		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "restaurants.json");
 		//JSONParser jsonParser = new JSONParser();
 		ObjectMapper mapper = new ObjectMapper();
-		TypeReference<HashMap<String,User>> typeRef 
-        = new TypeReference<HashMap<String,User>>() {};
+		TypeReference<HashMap<String,Restaurant>> typeRef 
+        = new TypeReference<HashMap<String,Restaurant>>() {};
 
 		try {
 			in = new BufferedReader(new FileReader(file));
@@ -185,7 +168,7 @@ public class UserDAOImpl implements UserDAO{
 		}
 		
 		try {
-			users = mapper.readValue(in, typeRef);
+			restaurants = mapper.readValue(in, typeRef);
 //			for(String value : users.keySet()) {
 //				System.out.println("166-"+value);
 //			}

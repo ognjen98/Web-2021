@@ -5,6 +5,7 @@
 	    "name" : "Ognjen",
 	    "surname" : "asdadad",
 	    "gender" : "MALE",
+	    "dateOfBirth": null,
 	    "role" : "ADMIN"
   	}
 }

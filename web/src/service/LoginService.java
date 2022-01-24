@@ -1,5 +1,7 @@
 package service;
 
+
+
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
 import beans.Buyer;
@@ -64,7 +65,7 @@ public class LoginService {
 
 		if (user.getRole() == Role.BUYER) {
 			BuyerDAOImpl buyerDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
-			NewCookie cookie = new NewCookie("name", "123");
+			//NewCookie cookie = new NewCookie("name", "123");
 			Buyer buyer = buyerDAO.findByUsername(loginDTO.getUsername());
 			request.getSession(true).setAttribute("loggedInUser", buyer);
 

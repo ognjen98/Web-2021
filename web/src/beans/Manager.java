@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Manager extends User{
 
@@ -15,8 +16,8 @@ public class Manager extends User{
 		this.restaurant = restaurant;
 	}
 	
-	public Manager(String username, String password, String name, String surname, Gender gender, Role role) {
-		super(username, password, name, surname, gender, role);
+	public Manager(String username, String password, String name, String surname, Gender gender, Date dateOfBirth, Role role) {
+		super(username, password, name, surname, gender, dateOfBirth, role);
 		this.restaurant = new Restaurant();
 	}
 

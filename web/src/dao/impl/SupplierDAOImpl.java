@@ -171,8 +171,8 @@ public class SupplierDAOImpl implements SupplierDAO{
 		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "suppliers.json");
 		//JSONParser jsonParser = new JSONParser();
 		ObjectMapper mapper = new ObjectMapper();
-		TypeReference<HashMap<String,User>> typeRef 
-        = new TypeReference<HashMap<String,User>>() {};
+		TypeReference<HashMap<String,Supplier>> typeRef 
+        = new TypeReference<HashMap<String,Supplier>>() {};
 
 		try {
 			in = new BufferedReader(new FileReader(file));

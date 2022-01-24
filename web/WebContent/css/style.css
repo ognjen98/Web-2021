@@ -9,6 +9,10 @@ table, th, td {
     border: 1px solid black;
 }
 
+#restaurantForm{
+	margin-top: 110px;
+}
+
 #userTable{
     margin-top: 110px;
 }

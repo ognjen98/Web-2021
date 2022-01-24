@@ -1,9 +1,10 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurant {
-	private String id;
+	private Integer id;
 	private String name;
 	private RestaurantType type;
 	private List<Article> articles;
@@ -15,7 +16,7 @@ public class Restaurant {
 		super();
 	}
 
-	public Restaurant(String id, String name, RestaurantType type, List<Article> articles, Boolean status, Location location,
+	public Restaurant(Integer id, String name, RestaurantType type, List<Article> articles, Boolean status, Location location,
 			String image) {
 		super();
 		this.id = id;
@@ -26,12 +27,23 @@ public class Restaurant {
 		this.location = location;
 		this.image = image;
 	}
+	
+	public Restaurant(String name, RestaurantType type, Boolean status, Location location,
+			String image) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.articles = new ArrayList<>();
+		this.status = status;
+		this.location = location;
+		this.image = image;
+	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -69,7 +69,7 @@ public class RegistrationService {
 		}
 		user.setRole(Role.BUYER);
 		userDAO.add(user);
-		Buyer buyer = new Buyer(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
+		Buyer buyer = new Buyer(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getDateOfBirth(), user.getRole());
 		BuyerDAOImpl buyerDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
 		buyerDAO.add(buyer);
 		
@@ -88,7 +88,7 @@ public class RegistrationService {
 		}
 		
 		if(user.getRole().equals(Role.MANAGER)) {
-			Manager manager = new Manager(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
+			Manager manager = new Manager(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getDateOfBirth(), user.getRole());
 			ManagerDAOImpl managerDAO = (ManagerDAOImpl) ctx.getAttribute("managerDAO");
 			managerDAO.add(manager);
 			userDAO.add(user);
@@ -97,7 +97,7 @@ public class RegistrationService {
 			return Response.status(Response.Status.OK).entity("Manager successfully registered").build();
 		}
 		else if(user.getRole().equals(Role.SUPPLIER)) {
-			Supplier supplier = new Supplier(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getRole());
+			Supplier supplier = new Supplier(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getDateOfBirth(), user.getRole());
 			SupplierDAOImpl supplierDAO = (SupplierDAOImpl) ctx.getAttribute("supplierDAO");
 			supplierDAO.add(supplier);
 			userDAO.add(user);

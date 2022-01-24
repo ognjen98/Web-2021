@@ -1,5 +1,6 @@
 $(document).ready(function () {
     hideSignupErrorMessages();
+ 
     var registerForm = $("form[name=registerForm]");
     
     $("#SignUpModal").on("hidden.bs.modal", function (event) {
@@ -12,11 +13,13 @@ $(document).ready(function () {
         if (checkSignUpForm() !== true) {
             return;
         }
+        
         registerData = {
             username: $("#username").val(),
             password: $("#password").val(),
             name: $("#name").val(),
             surname: $("#surname").val(),
+            dateOfBirth: Date.parse($("#datepicker").val()),
             gender: ($("#gender option:selected").text()).toUpperCase()
         }
         $.ajax({

@@ -169,8 +169,8 @@ public class ManagerDAOImpl implements ManagerDAO{
 		File file = new File("D:\\web\\Web-2021\\web\\WebContent\\data\\" + "managers.json");
 		//JSONParser jsonParser = new JSONParser();
 		ObjectMapper mapper = new ObjectMapper();
-		TypeReference<HashMap<String,User>> typeRef 
-        = new TypeReference<HashMap<String,User>>() {};
+		TypeReference<HashMap<String,Manager>> typeRef 
+        = new TypeReference<HashMap<String,Manager>>() {};
 
 		try {
 			in = new BufferedReader(new FileReader(file));

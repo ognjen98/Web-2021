@@ -1,34 +1,56 @@
 {
+  "user2" : {
+    "username" : "user2",
+    "password" : "123",
+    "name" : "Sabo",
+    "surname" : "Milosevic",
+    "gender" : "FEMALE",
+    "dateOfBirth" : 1641942000000,
+    "role" : "BUYER"
+  },
+  "manager" : {
+    "username" : "manager",
+    "password" : "123",
+    "name" : "Man",
+    "surname" : "Ager",
+    "gender" : "MALE",
+    "dateOfBirth" : 1642978800000,
+    "role" : "MANAGER"
+  },
+  "supplier" : {
+    "username" : "supplier",
+    "password" : "123",
+    "name" : "Sup",
+    "surname" : "Lier",
+    "gender" : "MALE",
+    "dateOfBirth" : 1643324400000,
+    "role" : "SUPPLIER"
+  },
   "admin" : {
     "username" : "admin",
     "password" : "123",
     "name" : "Ognjen",
     "surname" : "asdadad",
     "gender" : "MALE",
+    "dateOfBirth" : null,
     "role" : "ADMIN"
-  },
-  "manager" : {
-    "username" : "manager",
-    "password" : "123",
-    "name" : "dada",
-    "surname" : "daawd",
-    "gender" : "OTHER",
-    "role" : "MANAGER"
-  },
-  "supplier" : {
-    "username" : "supplier",
-    "password" : "123",
-    "name" : "sup",
-    "surname" : "susda",
-    "gender" : "FEMALE",
-    "role" : "SUPPLIER"
   },
   "user" : {
     "username" : "user",
     "password" : "123",
-    "name" : "Gadwdad",
-    "surname" : "asdadad",
+    "name" : "User",
+    "surname" : "Sasd",
     "gender" : "MALE",
+    "dateOfBirth" : 1641942000000,
     "role" : "BUYER"
+  },
+  "manager2" : {
+    "username" : "manager2",
+    "password" : "123",
+    "name" : "Mango",
+    "surname" : "Srbic",
+    "gender" : "MALE",
+    "dateOfBirth" : 1641855600000,
+    "role" : "MANAGER"
   }
 }

@@ -2,9 +2,37 @@
   "manager" : {
     "username" : "manager",
     "password" : "123",
-    "name" : "dada",
-    "surname" : "daawd",
-    "gender" : "OTHER",
+    "name" : "Man",
+    "surname" : "Ager",
+    "gender" : "MALE",
+    "dateOfBirth" : 1642978800000,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "id" : 1,
+      "name" : "adla",
+      "type" : "ITALIAN",
+      "articles" : [ ],
+      "status" : true,
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "adlawdkladk",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/d52d5f94-5d6a-4ba9-8d8c-2f0ff32b3d2a.png"
+    }
+  },
+  "manager2" : {
+    "username" : "manager2",
+    "password" : "123",
+    "name" : "Mango",
+    "surname" : "Srbic",
+    "gender" : "MALE",
+    "dateOfBirth" : 1641855600000,
     "role" : "MANAGER",
     "restaurant" : {
       "id" : null,

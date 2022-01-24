@@ -2,9 +2,9 @@ $(document).ready(function () {
     isUserLoggedIn();
     var date = new Date();
     date.setDate(date.getDate());
-    $('.input-daterange').datepicker({
-        todayHighlight: true,
-        startDate: date
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        startDate: '-3d'
     });
 
     let btnSubmit = $("#btnSubmit");

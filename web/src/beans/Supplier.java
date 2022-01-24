@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Supplier extends User{
@@ -16,8 +17,8 @@ public class Supplier extends User{
 		this.orders = orders;
 	}
 	
-	public Supplier(String username, String password, String name, String surname, Gender gender, Role role) {
-		super(username, password, name, surname, gender, role);
+	public Supplier(String username, String password, String name, String surname, Gender gender, Date dateOfBirth, Role role) {
+		super(username, password, name, surname, gender, dateOfBirth, role);
 		this.orders = new ArrayList<>();
 	}
 

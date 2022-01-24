@@ -2,9 +2,10 @@
   "supplier" : {
     "username" : "supplier",
     "password" : "123",
-    "name" : "sup",
-    "surname" : "susda",
-    "gender" : "FEMALE",
+    "name" : "Sup",
+    "surname" : "Lier",
+    "gender" : "MALE",
+    "dateOfBirth" : 1643324400000,
     "role" : "SUPPLIER",
     "orders" : [ ]
   }
