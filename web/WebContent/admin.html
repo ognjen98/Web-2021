@@ -7,7 +7,7 @@
     <meta http-equiv='pragma' content='no-cache'>
 
     <script src="js/jquery-3.3.1.min.js"></script>
-    <!--  <script src="js/index.js"></script> -->
+    <script src="js/index.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -20,7 +20,7 @@
     <title>Foody</title>
 </head>
 <body>
-
+	<header>
 		<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
             <ul class="navbar-nav navbar-ul">
                 <li class="navbar-brand">
@@ -43,15 +43,8 @@
                 
             </ul>
         </nav>
-        <img src = "http://localhost:8082/web/data/images/d3f8604f-568a-4d4e-a1d0-ec00b277299e.png" style="margin-top: 500px;margin-left:500px"  width="200" height="200">
-        <div id="parent">
-            <div id="restaurantDiv">
-
-            </div>
-            <table class="table" id="userTable">
-
-            </table>
-        </div>
+        
+        
             <div id="userModal" class="modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -112,7 +105,21 @@
 
                 </div>
             </div>
+	</header>
+	
+             <div class="col-8" id="restaurants">
+    
+   			 </div>
+   			 <div class="col-8" id="closed">
+    
+    </div>
+   			 <div id="parent">
+            <div id="restaurantDiv">
 
-            
+            </div>
+            <table class="table" id="userTable">
+
+            </table>
+        </div>
 </body>
 </html>

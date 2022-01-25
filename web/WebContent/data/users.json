@@ -35,6 +35,15 @@
     "dateOfBirth" : null,
     "role" : "ADMIN"
   },
+  "man" : {
+    "username" : "man",
+    "password" : "123",
+    "name" : "djawdj",
+    "surname" : "wdklqwd",
+    "gender" : "MALE",
+    "dateOfBirth" : 1613084400000,
+    "role" : "MANAGER"
+  },
   "user" : {
     "username" : "user",
     "password" : "123",

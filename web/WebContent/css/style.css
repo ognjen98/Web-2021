@@ -128,8 +128,9 @@ body {
 }
 
 .card-custom-apartment {
-    margin-bottom: 20px;
-    border-radius: 25px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    margin-top: 60px;
 }
 
 .div-search-labels {
