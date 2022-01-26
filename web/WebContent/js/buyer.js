@@ -7,16 +7,16 @@ $(document).ready(function () {
         changeInfo();
     })
 	
-	logout();
+	logoutUser();
 
   
 });
 
 
-function logout() {
+function logoutUser() {
     let navbarUl = $("#navbarUl");
 
-    $("#logoutBtn").click(function () {
+    $("#logout").click(function () {
         $.ajax({
             type: "GET",
             url: "rest/login/logout",

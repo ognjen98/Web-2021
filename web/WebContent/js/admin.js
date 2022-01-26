@@ -15,7 +15,7 @@ $(document).ready(function () {
 	//addRestaurant(resDiv);
     createManagerSupplier();
     
-	logout();
+	logoutAdmin();
 	
 	$("#restaurantBtn").click(function(event){
 		event.stopImmediatePropagation();
@@ -32,10 +32,10 @@ $(document).ready(function () {
 
 });
 
-function logout() {
+function logoutAdmin() {
     let navbarUl = $("#navbarUl");
 
-    $("#logoutBtn").click(function () {
+    $("#log").click(function () {
         $.ajax({
             type: "GET",
             url: "rest/login/logout",

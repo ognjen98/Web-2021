@@ -1,10 +1,259 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/registration.js"></script>
+    <script src="js/resPage.js"></script>
+    <script src="js/buyer.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foody</title>
 </head>
 <body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+            <ul class="navbar-nav navbar-ul">
+                <li class="navbar-brand">
+                    <a href="#" class=" navbar-brand-custom">Foody</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto navbar-ul" id="navbarUlAdmin" style="display: none;">
+                <li class="nav-item nav-item-custom">
+                    <button id="usersBtn" type="button" class="btn btn-primary navbar-btn-custom">Users</button>
+                </li>
+                 <li class="nav-item nav-item-custom">
+                    <button id="restaurantBtn" type="button" class="btn btn-primary navbar-btn-custom" onclick="window.location.href = 'restaurant.html'">Restaurant</button>
+                </li>
+                <li class="nav-item nav-item-custom">
+                    <button id="managerSupplierBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#userModal">Staff</button>
+                </li>
+				<li class="nav-item nav-item-custom">
+                    <button id="log" type="button" class="btn btn-primary navbar-btn-custom">Logout</button>
+                </li>
+                
+            </ul>
+            <ul class="navbar-nav ml-auto navbar-ul" id="navbarUlUser" style="display: none;">
+                <li class="nav-item nav-item-custom">
+                    <button id="infoBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#infoModal">Personal info</button>
+                </li>
+				<li class="nav-item nav-item-custom">
+                    <button id="logout" type="button" class="btn btn-primary navbar-btn-custom">Logout</button>
+                </li>
+               
+            </ul>
+            <ul class="navbar-nav ml-auto navbar-ul" id="navbarUlNoUser" style="display: none;">
+				<li class="nav-item nav-item-custom">
+                    <button id="loginBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#LoginModal">Login</button>
+                </li>
+                <li class="nav-item nav-item-custom">
+                    <button id="regBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#SignUpModal">Register</button>
+                </li>
+            </ul>
+        </nav>
+        
+        <div id="infoModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
 
+                        <h4 class="modal-title">Personal Info</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="infoForm">
+                            
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="First name"
+                                    id="name">
+                                <p class="error-messages" id="nameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="Last name"
+                                    id="surname">
+                                <p class="error-messages" id="surnameErrorMessage"></p>
+                            </div>
+                            
+                            <div class="form-group modal-form-input-selection">
+                                <select class="form-control" id="gender">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary " id="btnInfo">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        
+        
+            <div id="userModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title">Create manager/supplier</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="createForm">
+                                <div class="form-group modal-form-input-selection">
+                                    <select class="form-control" id="role">
+                                        <option value="1">Manager</option>
+                                        <option value="2">Supplier</option>
+                                    </select>
+                                </div>
+                                <div class="form-group modal-form-input" id="nameInput">
+                                    <input type="text" class="form-control sign-up-input" placeholder="Username"
+                                        id="username">
+                                    <p class="error-messages" id="usernameErrorMessage"></p>
+                                </div>
+                                <div class="form-group modal-form-input">
+                                    <input type="text" class="form-control sign-up-input" placeholder="First name"
+                                        id="name">
+                                    <p class="error-messages" id="nameErrorMessage"></p>
+                                </div>
+                                <div class="form-group modal-form-input">
+                                    <input type="text" class="form-control sign-up-input" placeholder="Last name"
+                                        id="surname">
+                                    <p class="error-messages" id="surnameErrorMessage"></p>
+                                </div>
+                                <div class="form-group modal-form-input">
+                                    <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                        id="password">
+                                    <p class="error-messages" id="passwordErrorMessage"></p>
+
+                                </div>
+                                <div class="form-group modal-form-input">
+                                    <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                        id="passwordControl">
+                                    <p class="error-messages" id="passwordControlErrorMessage"></p>
+                                </div>
+                                <div class="form-group modal-form-input">
+							<input type="text" id="datepicker" data-provide="datepicker" placeholder="mm/dd/yyyy">
+							</div>
+                                <div class="form-group modal-form-input-selection">
+                                    <select class="form-control" id="gender">
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary " id="btnCreate">Sign up</button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            
+            
+            <div id="LoginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="loginForm" action="#" method="POST">
+                            <div class="form-group modal-form-input" id="emailInput">
+                                <input type="text" class="form-control" placeholder="Username" id="loginUsername">
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control" placeholder="Password" id="loginPassword">
+                                <p class="error-messages" id="loginErrorMessage"></p>
+                            </div>
+                            <button type="submit" class="btn btn-primary " id="btnLogin">Login</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="SignUpModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h4 class="modal-title">Sign up</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form name="registerForm">
+                            <div class="form-group modal-form-input" id="nameInput">
+                                <input type="text" class="form-control sign-up-input" placeholder="Username"
+                                    id="username">
+                                <p class="error-messages" id="usernameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="First name"
+                                    id="name">
+                                <p class="error-messages" id="nameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="text" class="form-control sign-up-input" placeholder="Last name"
+                                    id="surname">
+                                <p class="error-messages" id="surnameErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                    id="password">
+                                <p class="error-messages" id="passwordErrorMessage"></p>
+
+                            </div>
+                            <div class="form-group modal-form-input">
+                                <input type="password" class="form-control sign-up-input" placeholder="Password"
+                                    id="passwordControl">
+                                <p class="error-messages" id="passwordControlErrorMessage"></p>
+                            </div>
+                            <div class="form-group modal-form-input">
+							<input type="text" id="datepicker" data-provide="datepicker" placeholder="mm/dd/yyyy">
+							</div>
+                            <div class="form-group modal-form-input-selection">
+                                <select class="form-control" id="gender">
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary " id="btnSignUp">Sign up</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+	</header>
+	
+	<div class="container" style="margin-top: 100px;">
+                
+                    
+    
+	    <div class="col-8" id="restInfo" style="margin-top:50px;">
+	    dkadlk
+	    </div>
+    </div>
+   			 
+        
 </body>
 </html>

@@ -83,27 +83,27 @@ function checkIfUserLoggedIn() {
         }
     }); 
 }
-function logout() {
-    let navbarUl = $("#navbarUl");
-
-    navbarUl.empty();
-    navbarUl.append('<li class=" nav-item nav-item-custom" id="logoutButtonLi">' +
-        '<button type="button" class="btn btn-primary navbar-btn-custom" id="logoutButton">Logout</button>' +
-        '</li>');
-
-    $("#logoutButton").click(function () {
-        $.ajax({
-            type: "GET",
-            url: "rest/login/logout",
-            success: function (data, textStatus, XMLHttpRequest) {
-                createLoginRegisterButtons();
-                window.location.href = "index.html";
-            }
-        })
-    })
-
-
-}
+//function logout() {
+//    let navbarUl = $("#navbarUl");
+//
+//    navbarUl.empty();
+//    navbarUl.append('<li class=" nav-item nav-item-custom" id="logoutButtonLi">' +
+//        '<button type="button" class="btn btn-primary navbar-btn-custom" id="logoutButton">Logout</button>' +
+//        '</li>');
+//
+//    $("#logoutButton").click(function () {
+//        $.ajax({
+//            type: "GET",
+//            url: "rest/login/logout",
+//            success: function (data, textStatus, XMLHttpRequest) {
+//                createLoginRegisterButtons();
+//                window.location.href = "index.html";
+//            }
+//        })
+//    })
+//
+//
+//}
 
 
 function createLoginRegisterButtons() {

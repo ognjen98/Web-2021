@@ -22,6 +22,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -131,6 +132,16 @@ public class RestaurantService {
 		return all;
 	}
 	
+	
+	@GET
+	@Path("/getById/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Restaurant getById(@PathParam("id") String id ){
+		RestaurantDAOImpl resDAO = (RestaurantDAOImpl) ctx.getAttribute("restaurantDAO");
+		Restaurant res = resDAO.findById(id);
+		
+		return res;
+	}
 	
 	@GET
 	@Path("/getClosedRestaurants")

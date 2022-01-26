@@ -66,7 +66,7 @@ function createRestaurantCards(restaurants, resCards) {
                     '</div>' +
                     '</div>' +
                     '</div>' +
-                    '<a href="apartmentPage.html?id=' + restaurant.id + '&checkInDate=' + $("input[name=startDate]").val() + '&checkoutDate=' + $("input[name=endDate]").val() + '"' + 'class="stretched-link"></a>' +
+                    '<a href="restaurantPage.html?id=' + restaurant.id + '"' + 'class="stretched-link"></a>' +
                     '</div>')
 
 
