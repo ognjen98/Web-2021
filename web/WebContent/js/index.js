@@ -37,16 +37,7 @@ function getWorkingRestaurants(resCards){
     });
 }
 
-function getClosedRestaurants(resCards){
-	$.ajax({
-        type: "GET",
-        url: "rest/restaurant/getClosedRestaurants",
-        success: function (restaurants) {
-            createRestaurantCards(restaurants, resCards);
-        }
 
-    });
-}
 
 function createRestaurantCards(restaurants, resCards) {
     

@@ -37,10 +37,10 @@ $(document).ready(function () {
 	    	$("#navbarUlUser").css("display", "block");
 	    }
 	    else if(role == "MANAGER"){
-	    	$("#navbarUlAdmin").css("display", "block");
+	    	$("#navbarUlManager").css("display", "block");
 	    }
 	    else if(role == "SUPPLIER"){
-	    	$("#navbarUlAdmin").css("display", "block");
+	    	$("#navbarUlSupplier").css("display", "block");
 	    }
     }
     else{

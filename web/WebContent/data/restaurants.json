@@ -1,56 +1,56 @@
 {
   "1" : {
     "id" : 1,
-    "name" : "adla",
-    "type" : "ITALIAN",
+    "name" : "Posejdon",
+    "type" : "MEXICAN",
     "articles" : [ ],
-    "status" : false,
+    "status" : "WORKING",
     "location" : {
       "longitude" : null,
       "latitude" : null,
       "address" : {
         "streetName" : null,
         "number" : null,
-        "city" : "adlawdkladk",
+        "city" : "Sremska Mitrovica",
         "zipCode" : null
       }
     },
-    "image" : "http://localhost:8082/web/data/images/d52d5f94-5d6a-4ba9-8d8c-2f0ff32b3d2a.png"
+    "image" : "http://localhost:8082/web/data/images/cd21f482-ef76-426e-b061-673970871ade.png"
   },
   "2" : {
     "id" : 2,
-    "name" : "kakaklaak",
-    "type" : "MEXICAN",
+    "name" : "XL",
+    "type" : "ITALIAN",
     "articles" : [ ],
-    "status" : true,
+    "status" : "NOT_WORKING",
     "location" : {
       "longitude" : null,
       "latitude" : null,
       "address" : {
         "streetName" : null,
         "number" : null,
-        "city" : "iqowieqoi",
+        "city" : "Beograd",
         "zipCode" : null
       }
     },
-    "image" : "http://localhost:8082/web/data/images/285f4c82-9d63-4594-8ede-e7382a9b1c0b.png"
+    "image" : "http://localhost:8082/web/data/images/6cf11bbf-78aa-4970-800c-91596dadd61d.png"
   },
   "3" : {
     "id" : 3,
-    "name" : "asdmw",
-    "type" : "ITALIAN",
+    "name" : "Xin Zhao",
+    "type" : "CHINESE",
     "articles" : [ ],
-    "status" : true,
+    "status" : "WORKING",
     "location" : {
       "longitude" : null,
       "latitude" : null,
       "address" : {
         "streetName" : null,
         "number" : null,
-        "city" : "wqkeqw",
+        "city" : "Novi Sad",
         "zipCode" : null
       }
     },
-    "image" : "http://localhost:8082/web/data/images/a2e7e38c-d6ef-43f7-b3ba-a57abf7c0217.png"
+    "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png"
   }
 }

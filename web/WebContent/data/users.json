@@ -14,7 +14,7 @@
     "name" : "Man",
     "surname" : "Ager",
     "gender" : "MALE",
-    "dateOfBirth" : 1642978800000,
+    "dateOfBirth" : 1661983200000,
     "role" : "MANAGER"
   },
   "supplier" : {
@@ -38,10 +38,10 @@
   "man" : {
     "username" : "man",
     "password" : "123",
-    "name" : "djawdj",
-    "surname" : "wdklqwd",
+    "name" : "Argo",
+    "surname" : "Turs",
     "gender" : "MALE",
-    "dateOfBirth" : 1613084400000,
+    "dateOfBirth" : 1665007200000,
     "role" : "MANAGER"
   },
   "user" : {
@@ -57,9 +57,9 @@
     "username" : "manager2",
     "password" : "123",
     "name" : "Mango",
-    "surname" : "Srbic",
+    "surname" : "Sivcic",
     "gender" : "MALE",
-    "dateOfBirth" : 1641855600000,
+    "dateOfBirth" : 1664316000000,
     "role" : "MANAGER"
   }
 }

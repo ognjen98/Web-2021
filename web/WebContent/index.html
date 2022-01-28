@@ -122,13 +122,45 @@
         </div>
 
     </header>
+    <form  action="#" style="padding-top: 100px;">
+	    <div class="container">
+	    <div class="row">
+	    <div class="col-3">
+	    	<input class="search-input-custom" type="text" placeholder="Name" name="resName" id="resName">
+	    </div>
+	    <div class="col-3">
+	    	<input class="search-input-custom" type="text" placeholder="Location" name="location" id="location">
+	    </div>
+	    <div class="col-2">
+	    	<select class="form-control" id="resType">
+	    				<option value="0"></option>
+	                    <option value="1">Italian</option>
+	                     <option value="2">Chinese</option>
+	                     <option value="3">Mexican</option>
+	                    <option value="4">Pizza</option>
+	                    <option value="5">Barbeque</option>
+	                    <option value="6">Fast food</option>
+	        </select>
+	        </div>
+	        <div class="col-2">
+	        <select class="form-control" id="resStatus">
+	    				<option value="0"></option>
+	                    <option value="1">Working</option>
+	                     <option value="2">Not working</option>
+	                     
+	        </select>
+	        </div>
+	        <div class="col-2">
+	        <button type="submit" class="btn btn-primary " id="btnSignUp">Search</button>
+	        </div>
+	      </div>
+	    </div>
+    </form>
     
     <div class="col-8" id="restaurants">
     
     </div>
-    <div class="col-8" id="closed">
     
-    </div>
 <!--
     <main>
         <form action="#" style="padding-top: 100px;" id="form">

@@ -16,9 +16,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.Buyer;
+import beans.Manager;
 import beans.Role;
+import beans.Supplier;
 import beans.User;
 import dao.impl.BuyerDAOImpl;
+import dao.impl.ManagerDAOImpl;
+import dao.impl.SupplierDAOImpl;
 import dao.impl.UserDAOImpl;
 import dto.LoginDTO;
 
@@ -42,6 +46,14 @@ public class LoginService {
 		if(ctx.getAttribute("buyerDAO") == null) {
 			String contextPath = ctx.getRealPath("");
 			ctx.setAttribute("buyerDAO", new BuyerDAOImpl(contextPath));
+		}
+		if(ctx.getAttribute("managerDAO") == null) {
+			String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("managerDAO", new ManagerDAOImpl(contextPath));
+		}
+		if(ctx.getAttribute("supplierDAO") == null) {
+			String contextPath = ctx.getRealPath("");
+			ctx.setAttribute("supplierDAO", new SupplierDAOImpl(contextPath));
 		}
 	}
 	
@@ -71,12 +83,29 @@ public class LoginService {
 
 			return Response.ok().entity("buyer.html").build(); // treba proslediti pocetnu stranicu odgovarajuceg
 																	// korisnika
-		} else if (user.getRole() == Role.ADMIN) {
+		} 
+		else if (user.getRole() == Role.ADMIN) {
 
 			request.getSession().setAttribute("loggedInUser", user);
 			return Response.ok().entity("admin.html").build();
-		} else {
-			/* HOST */
+		} 
+		else if (user.getRole() == Role.MANAGER) {
+
+			ManagerDAOImpl managerDAO = (ManagerDAOImpl) ctx.getAttribute("managerDAO");
+			//NewCookie cookie = new NewCookie("name", "123");
+			Manager manager = managerDAO.findByUsername(loginDTO.getUsername());
+			
+			request.getSession().setAttribute("loggedInUser", manager);
+			return Response.ok().entity("manager.html").build();
+		}
+		else if (user.getRole() == Role.SUPPLIER) {
+
+			SupplierDAOImpl supplierDAO = (SupplierDAOImpl) ctx.getAttribute("supplierDAO");
+			//NewCookie cookie = new NewCookie("name", "123");
+			Supplier supplier = supplierDAO.findByUsername(loginDTO.getUsername());
+			
+			request.getSession().setAttribute("loggedInUser", supplier);
+			return Response.ok().entity("supplier.html").build();
 		}
 		return null;
 	}

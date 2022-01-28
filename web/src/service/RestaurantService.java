@@ -37,12 +37,14 @@ import beans.Address;
 import beans.Location;
 import beans.Manager;
 import beans.Restaurant;
+import beans.RestaurantStatus;
 import beans.RestaurantType;
 import dao.impl.BuyerDAOImpl;
 import dao.impl.ManagerDAOImpl;
 import dao.impl.RestaurantDAOImpl;
 import dao.impl.UserDAOImpl;
 import dto.RestaurantDTO;
+import dto.SearchDTO;
 
 @Path("restaurant")
 public class RestaurantService {
@@ -97,7 +99,7 @@ public class RestaurantService {
 		loc.setAddress(add);
 		RestaurantType t = getType(type);
 		RestaurantDAOImpl restaurantDAO = (RestaurantDAOImpl) ctx.getAttribute("restaurantDAO");
-		Restaurant restaurant = new Restaurant(resName,t, true, loc, imgPath);
+		Restaurant restaurant = new Restaurant(resName,t, RestaurantStatus.WORKING, loc, imgPath);
 		ManagerDAOImpl managerDAO = (ManagerDAOImpl) ctx.getAttribute("managerDAO");
 		Manager man = managerDAO.findById(manager);
 		man.setRestaurant(restaurant);
@@ -120,7 +122,7 @@ public class RestaurantService {
 		Collection<Restaurant> closed = new ArrayList<Restaurant>();
 		Collection<Restaurant> all = new ArrayList<Restaurant>();
 		for(Restaurant r: restaurants) {
-			if(r.getStatus()) {
+			if(r.getStatus().equals(RestaurantStatus.WORKING)) {
 				working.add(r);
 			}
 			else {
@@ -129,6 +131,48 @@ public class RestaurantService {
 		}
 		all.addAll(working);
 		all.addAll(closed);
+		return all;
+	}
+	
+	
+	@POST
+	@Path("/search")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Collection<Restaurant> search(SearchDTO dto){
+		RestaurantDAOImpl resDAO = (RestaurantDAOImpl) ctx.getAttribute("restaurantDAO");
+		Collection<Restaurant> restaurants = resDAO.findAll();
+		Collection<Restaurant> working = new ArrayList<Restaurant>();
+		Collection<Restaurant> closed = new ArrayList<Restaurant>();
+		Collection<Restaurant> all = new ArrayList<Restaurant>();
+		Collection<Restaurant> searched = new ArrayList<Restaurant>();
+		for(Restaurant res: new ArrayList<Restaurant>(restaurants)) {
+			if(!dto.getName().equals("") && !dto.getName().equalsIgnoreCase(res.getName())) {
+				restaurants.remove(res);
+			}
+			if(!dto.getLocation().equals("") && !dto.getLocation().equalsIgnoreCase(res.getLocation().getAddress().getCity())) {
+				restaurants.remove(res);
+			}
+			if(!dto.getType().equals("") && !dto.getType().equalsIgnoreCase(res.getType().toString())) {
+				restaurants.remove(res);
+			}
+			if(!dto.getStatus().equals("") && !dto.getStatus().equalsIgnoreCase(res.getStatus().toString())) {
+				restaurants.remove(res);
+			}
+		}
+		
+		
+		for(Restaurant r: restaurants) {
+			if(r.getStatus().equals(RestaurantStatus.WORKING)) {
+				working.add(r);
+			}
+			else {
+				closed.add(r);
+			}
+		}
+		all.addAll(working);
+		all.addAll(closed);
+		
 		return all;
 	}
 	
@@ -143,20 +187,7 @@ public class RestaurantService {
 		return res;
 	}
 	
-	@GET
-	@Path("/getClosedRestaurants")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Collection<Restaurant> getClosedRestaurants(){
-		RestaurantDAOImpl resDAO = (RestaurantDAOImpl) ctx.getAttribute("restaurantDAO");
-		Collection<Restaurant> restaurants = resDAO.findAll();
-		Collection<Restaurant> closed = new ArrayList<Restaurant>();
-		for(Restaurant r: restaurants) {
-			if(!r.getStatus()) {
-				closed.add(r);
-			}
-		}
-		return closed;
-	}
+	
 	
 	@GET
 	@Path("/getManagers")

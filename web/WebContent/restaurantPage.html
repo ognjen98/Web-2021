@@ -13,6 +13,8 @@
     <script src="js/registration.js"></script>
     <script src="js/resPage.js"></script>
     <script src="js/buyer.js"></script>
+    <script src="js/manager.js"></script>
+    <script src="js/supplier.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-datepicker.min.js"></script>
@@ -52,6 +54,24 @@
                 </li>
 				<li class="nav-item nav-item-custom">
                     <button id="logout" type="button" class="btn btn-primary navbar-btn-custom">Logout</button>
+                </li>
+               
+            </ul>
+            <ul class="navbar-nav ml-auto navbar-ul" id="navbarUlManager" style="display: none;">
+                <li class="nav-item nav-item-custom">
+                    <button id="infoBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#infoModal">Personal info</button>
+                </li>
+				<li class="nav-item nav-item-custom">
+                    <button id="logoutMan" type="button" class="btn btn-primary navbar-btn-custom">Logout</button>
+                </li>
+               
+            </ul>
+            <ul class="navbar-nav ml-auto navbar-ul" id="navbarUlSupplier" style="display: none;">
+                <li class="nav-item nav-item-custom">
+                    <button id="infoBtn" type="button" class="btn btn-primary navbar-btn-custom" data-toggle="modal" data-target="#infoModal">Personal info</button>
+                </li>
+				<li class="nav-item nav-item-custom">
+                    <button id="logoutSup" type="button" class="btn btn-primary navbar-btn-custom">Logout</button>
                 </li>
                
             </ul>

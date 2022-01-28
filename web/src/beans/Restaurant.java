@@ -8,7 +8,7 @@ public class Restaurant {
 	private String name;
 	private RestaurantType type;
 	private List<Article> articles;
-	private Boolean status;
+	private RestaurantStatus status;
 	private Location location;
 	private String image;
 	
@@ -16,7 +16,7 @@ public class Restaurant {
 		super();
 	}
 
-	public Restaurant(Integer id, String name, RestaurantType type, List<Article> articles, Boolean status, Location location,
+	public Restaurant(Integer id, String name, RestaurantType type, List<Article> articles, RestaurantStatus status, Location location,
 			String image) {
 		super();
 		this.id = id;
@@ -28,7 +28,7 @@ public class Restaurant {
 		this.image = image;
 	}
 	
-	public Restaurant(String name, RestaurantType type, Boolean status, Location location,
+	public Restaurant(String name, RestaurantType type, RestaurantStatus status, Location location,
 			String image) {
 		super();
 		this.name = name;
@@ -71,11 +71,11 @@ public class Restaurant {
 		this.articles = articles;
 	}
 
-	public Boolean getStatus() {
+	public RestaurantStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(RestaurantStatus status) {
 		this.status = status;
 	}
 
