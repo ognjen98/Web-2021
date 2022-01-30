@@ -6,17 +6,17 @@ public class SearchDTO {
 	private String location;
 	private String status;
 	private String type;
-	//private Double grade;
+	private String grade;
 	
 	public SearchDTO() {}
 
-	public SearchDTO(String name, String location, String status, String type) {
+	public SearchDTO(String name, String location, String status, String type, String grade) {
 		super();
 		this.name = name;
 		this.location = location;
 		this.status = status;
 		this.type = type;
-		//this.grade = grade;
+		this.grade = grade;
 	}
 
 	public String getName() {
@@ -51,13 +51,13 @@ public class SearchDTO {
 		this.type = type;
 	}
 
-//	public Double getGrade() {
-//		return grade;
-//	}
-//
-//	public void setGrade(Double grade) {
-//		this.grade = grade;
-//	}
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	
 	
 

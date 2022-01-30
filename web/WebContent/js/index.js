@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     let resCards = $("#restaurants");
     getWorkingRestaurants(resCards);
-    
+    searchRestaurants(resCards);
    // hideNavBarButtons();
 
     
@@ -39,6 +39,34 @@ function getWorkingRestaurants(resCards){
 
 
 
+function searchRestaurants(resCards){
+	let searchForm = $("#searchForm");
+	searchForm.submit(function (event) {
+        event.preventDefault();
+        
+        searchData = {
+            name: $("#resName").val(),
+            location: $("#location").val(),
+            grade: $("#resGrade").val(),
+            status: ($("#resStatus option:selected").text()).toUpperCase(),
+            type: ($("#resType option:selected").text()).toUpperCase()
+        }
+
+        
+        $.ajax({
+            type: "POST",
+            url: "rest/restaurant/search",
+            contentType: "application/json",
+            data: JSON.stringify(searchData),
+            success: function (data) {
+
+            	createRestaurantCards(data,resCards)
+            }
+        });
+    });
+}
+
+
 function createRestaurantCards(restaurants, resCards) {
     
     resCards.empty();
@@ -51,9 +79,11 @@ function createRestaurantCards(restaurants, resCards) {
                     '<div class="col-sm-7">' +
                     '<div class="card-body">' +
                     '<h4 class="card-title">' + restaurant.name + '</h4>' +
-                    '<h5>' + restaurant.location.address.city + " " + restaurant.location.address.streetName + " " + restaurant.location.address.number + '</h5>' + 
+                    '<h5>' + restaurant.location.address.streetName + " " + restaurant.location.address.number + " " + restaurant.location.address.number + '</h5>' + 
+                    '<h6>' + restaurant.location.address.city + " " + restaurant.location.address.number + " " + restaurant.location.address.zipCode + '</h6>' + 
                     '<p class="card-text" style="color: #868e96;">' + restaurant.location.latitude + "," + restaurant.location.longitude + '</p>' +
                     '<p class="card-text">Restaurant type: ' + restaurant.type + '</p>' + 
+                    '<p class="card-text">Grade: ' + restaurant.grade + '</p>' + 
                     '</div>' +
                     '</div>' +
                     '</div>' +

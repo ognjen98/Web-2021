@@ -11,13 +11,14 @@ public class Restaurant {
 	private RestaurantStatus status;
 	private Location location;
 	private String image;
+	private Double grade;
 	
 	public Restaurant() {
 		super();
 	}
 
 	public Restaurant(Integer id, String name, RestaurantType type, List<Article> articles, RestaurantStatus status, Location location,
-			String image) {
+			String image, Double grade) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -26,10 +27,24 @@ public class Restaurant {
 		this.status = status;
 		this.location = location;
 		this.image = image;
+		this.grade = grade;
+	}
+	
+	public Restaurant(Integer id, String name, RestaurantType type, RestaurantStatus status, Location location,
+			String image, Double grade) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		
+		this.status = status;
+		this.location = location;
+		this.image = image;
+		this.grade = grade;
 	}
 	
 	public Restaurant(String name, RestaurantType type, RestaurantStatus status, Location location,
-			String image) {
+			String image, Double grade) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -37,6 +52,7 @@ public class Restaurant {
 		this.status = status;
 		this.location = location;
 		this.image = image;
+		this.grade = grade;
 	}
 
 	public Integer getId() {
@@ -96,5 +112,11 @@ public class Restaurant {
 	}
 	
 	
+	public Double getGrade() {
+		return grade;
+	}
 
+	public void setGrade(Double grade) {
+		this.grade = grade;
+	}
 }

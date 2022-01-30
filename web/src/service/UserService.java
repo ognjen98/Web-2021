@@ -55,6 +55,7 @@ public class UserService {
 	public GetInfoDTO getPersonalInfo() {
 		User u = getLoggedInUser();
 		GetInfoDTO dto = new GetInfoDTO();
+		dto.setUsername(u.getUsername());
 		dto.setName(u.getName());
 		dto.setSurname(u.getSurname());
 		dto.setGender(u.getGender().toString());

@@ -1,0 +1,86 @@
+{
+  "1" : {
+    "id" : 1,
+    "name" : "jkdqwkdwm",
+    "price" : 200.0,
+    "type" : "FOOD",
+    "restaurant" : {
+      "id" : 1,
+      "name" : "Posejdon",
+      "type" : "MEXICAN",
+      "articles" : null,
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "Sremska Mitrovica",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/cd21f482-ef76-426e-b061-673970871ade.png",
+      "grade" : 1.0
+    },
+    "quantity" : "GR",
+    "description" : "admad,m",
+    "image" : "http://localhost:8082/web/data/images/45119fb0-0335-4e8b-8c97-0658da469366.png"
+  },
+  "2" : {
+    "id" : 2,
+    "name" : "d,admm",
+    "price" : 200.0,
+    "type" : "FOOD",
+    "restaurant" : {
+      "id" : 2,
+      "name" : "XL",
+      "type" : "ITALIAN",
+      "articles" : null,
+      "status" : "CLOSED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "Beograd",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/6cf11bbf-78aa-4970-800c-91596dadd61d.png",
+      "grade" : 2.5
+    },
+    "quantity" : "GR",
+    "description" : "dmawl",
+    "image" : "http://localhost:8082/web/data/images/dd823412-525d-49a0-8b0f-97c23bd24a5d.png"
+  },
+  "3" : {
+    "id" : 3,
+    "name" : "qooqqpqoqpoq",
+    "price" : 100.0,
+    "type" : "FOOD",
+    "restaurant" : {
+      "id" : 2,
+      "name" : "XL",
+      "type" : "ITALIAN",
+      "articles" : null,
+      "status" : "CLOSED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "Beograd",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/6cf11bbf-78aa-4970-800c-91596dadd61d.png",
+      "grade" : 2.5
+    },
+    "quantity" : "GR",
+    "description" : "kda;dk",
+    "image" : "http://localhost:8082/web/data/images/0b330d09-b4d0-4d74-a957-22466228bdbb.png"
+  }
+}

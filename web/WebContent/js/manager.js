@@ -8,6 +8,7 @@ $(document).ready(function () {
     })
 	
 	logoutManager();
+    goToRestaurant();
 
   
 });
@@ -28,6 +29,17 @@ function logoutManager() {
     })
 
 
+}
+
+function goToRestaurant(){
+	let username = $("#usernameInfo")
+	$("#resButton").click(function () {
+        
+                
+        window.location.href = "restaurantPage.html?username=" + username.val();
+            
+        
+    })
 }
 
 function getPersonalInfo(){

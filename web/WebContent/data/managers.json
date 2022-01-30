@@ -12,7 +12,7 @@
       "name" : "Xin Zhao",
       "type" : "CHINESE",
       "articles" : [ ],
-      "status" : "WORKING",
+      "status" : "OPENED",
       "location" : {
         "longitude" : null,
         "latitude" : null,
@@ -23,7 +23,8 @@
           "zipCode" : null
         }
       },
-      "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png"
+      "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
+      "grade": 0.0
     }
   },
   "man" : {
@@ -39,7 +40,7 @@
       "name" : "XL",
       "type" : "ITALIAN",
       "articles" : [ ],
-      "status" : "WORKING",
+      "status" : "CLOSED",
       "location" : {
         "longitude" : null,
         "latitude" : null,
@@ -50,7 +51,8 @@
           "zipCode" : null
         }
       },
-      "image" : "http://localhost:8082/web/data/images/6cf11bbf-78aa-4970-800c-91596dadd61d.png"
+      "image" : "http://localhost:8082/web/data/images/6cf11bbf-78aa-4970-800c-91596dadd61d.png",
+      "grade": 2.5
     }
   },
   "manager2" : {
@@ -66,7 +68,7 @@
       "name" : "Posejdon",
       "type" : "MEXICAN",
       "articles" : [ ],
-      "status" : "WORKING",
+      "status" : "OPENED",
       "location" : {
         "longitude" : null,
         "latitude" : null,
@@ -77,7 +79,8 @@
           "zipCode" : null
         }
       },
-      "image" : "http://localhost:8082/web/data/images/cd21f482-ef76-426e-b061-673970871ade.png"
+      "image" : "http://localhost:8082/web/data/images/cd21f482-ef76-426e-b061-673970871ade.png",
+      "grade": 1.0
     }
   }
 }

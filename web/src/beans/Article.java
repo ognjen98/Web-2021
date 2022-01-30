@@ -2,12 +2,12 @@ package beans;
 
 public class Article {
 
-	private String id;
+	private Integer id;
 	private String name;
 	private Double price;
 	private ArticleType type;
 	private Restaurant restaurant;
-	private Integer quantity;
+	private QuantityType quantity;
 	private String description;
 	private String image;
 	
@@ -15,7 +15,7 @@ public class Article {
 		super();
 	}
 
-	public Article(String id, String name, double price, ArticleType type, Restaurant restaurant, Integer quantity,
+	public Article(Integer id, String name, double price, ArticleType type, Restaurant restaurant, QuantityType quantity,
 			String description, String image) {
 		super();
 		this.id = id;
@@ -27,12 +27,25 @@ public class Article {
 		this.description = description;
 		this.image = image;
 	}
+	
+	public Article(String name, double price, ArticleType type, QuantityType quantity,
+			String description, String image) {
+		super();
+		
+		this.name = name;
+		this.price = price;
+		this.type = type;
+		
+		this.quantity = quantity;
+		this.description = description;
+		this.image = image;
+	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -68,11 +81,11 @@ public class Article {
 		this.restaurant = restaurant;
 	}
 
-	public Integer getQuantity() {
+	public QuantityType getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(QuantityType quantity) {
 		this.quantity = quantity;
 	}
 

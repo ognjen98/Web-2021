@@ -32,6 +32,7 @@ function logoutUser() {
 
 function getPersonalInfo(){
     
+	let username = $("#usernameInfo");
     let name = $("#name");
     let surname = $("#surname");
     let gender = $("#gender");
@@ -41,6 +42,7 @@ function getPersonalInfo(){
         url: "rest/user/getInfo",
         success: function (getInfo, textStatus, XMLHttpRequest) {
             
+        	username.val(getInfo.username);
             name.val(getInfo.name);
             surname.val(getInfo.surname);
             if(getInfo.gender === "MALE")
