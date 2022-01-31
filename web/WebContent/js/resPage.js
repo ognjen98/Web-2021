@@ -36,6 +36,7 @@ $(document).ready(function () {
 	    else if(role == "BUYER"){
 	    	$("#navbarUlUser").css("display", "block");
 	    	$("#basketBtn").css("display","block");
+	    	createBasket();
 	    }
 	    else if(role == "MANAGER"){
 	    	$("#navbarUlManager").css("display", "block");
@@ -67,6 +68,61 @@ $(document).ready(function () {
     
     
 });
+
+
+function createBasket(){
+	
+	
+	$("#basketBtn").click(function(event){
+    	event.preventDefault();
+    	i = 0;
+    	quants = 0;
+    	artData = {
+            	items: [],
+            	buyer: $("#usernameInfo").val(),
+                resId: $("#restaurantId").text(),
+                
+            }
+    	
+    	$("tr.article").each(function() {
+    		if($("#quan"+i).val() != 0){
+	            artData.items.push({
+	            	name: $(this).find("#articleName"+i).html(),
+	            	price: $(this).find("#articlePrice"+i).html(),
+	            	type: $(this).find("#articleType"+i).html(),
+	            	qType: $(this).find("#articleQuan"+i).html(),
+	            	description: $(this).find("#articleDesc"+i).html(),
+	            	
+	            	quantity: $("#quan"+i).val(),
+	            	image: $(this).find("#articleImage"+i).prop('src')
+	            	
+	            });
+    		}
+            quants += $("#quan"+i).val();
+            i++;
+    	});
+
+    	console.log(artData)
+    	if(quants == 0){
+    		alert("Ukupna kolicina ne sme biti nula");
+    		return;
+    	}
+        $.ajax({
+            type: "POST",
+            url: "rest/order/createBasket",
+            contentType: "application/json",
+            data: JSON.stringify(artData),
+            success: function (data) {
+              //alert($("#managerSelect").val());
+            	window.location.href = "basket.html";
+            }
+//            failure: function(data){
+//            	alert($("#managerSelect").val());
+//            }
+        });
+//        return false
+    })
+}
 
 
 function getRestaurantById(res,role){
@@ -195,8 +251,8 @@ function createArticleTable(table,articles,role){
     table.empty();
     table.append('<thead class="thead-dark"><tr><th>Image</th><th>Name</th><th>Price</th><th>Type</th><th>Description</th><th>Measurement</th><th class="inputCol" ></th></tr></thead>');
     for(let article of articles){
-        table.append('<tr><td><img src="' + article.image + '" height="50" width="50">'+'</td>'
-        +'<td>'+article.name+'</td>'+'<td>'+article.price+'</td>'+'<td>'+article.type+'</td>' +'<td>'+article.description+'</td>' +'<td>'+article.quantity+'</td>'+'<td class="inputCol" ><input style="display:none" type="text" id="quan'+i+'">'+'</td></tr>');
+        table.append('<tr class="article"><td><img src="' + article.image + '" height="50" width="50" id="articleImage'+i+'">'+'</td>'
+        +'<td id="articleName'+i+'">'+article.name+'</td>'+'<td id="articlePrice'+i+'">'+article.price+'</td>'+'<td id="articleType'+i+'">'+article.type+'</td>' +'<td id="articleDesc'+i+'">'+article.description+'</td>' +'<td id="articleQuan'+i+'">'+article.quantity+'</td>'+'<td class="inputCol" ><input style="display:none" type="text" id="quan'+i+'" value="0">'+'</td></tr>');
         if(role == "BUYER"){
         	$("#quan" + i ).css("display","block");
         }

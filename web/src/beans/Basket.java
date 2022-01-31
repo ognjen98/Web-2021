@@ -5,28 +5,39 @@ import java.util.List;
 
 public class Basket {
 
-	private String id;
+	private Integer id;
 	private List<BasketItem> items;
 	private Buyer buyer;
 	private Double price;
+	private String resId;
 	
 	public Basket() {
 		super();
 	}
 
-	public Basket(String id, List<BasketItem> items, Buyer buyer, Double price) {
+	public Basket(Integer id, List<BasketItem> items, Buyer buyer, Double price, String resId) {
 		super();
 		this.id = id;
 		this.items = items;
 		this.buyer = buyer;
 		this.price = price;
+		this.resId = resId;
+	}
+	
+	public Basket(List<BasketItem> items, Buyer buyer, Double price, String resId) {
+		super();
+
+		this.items = items;
+		this.buyer = buyer;
+		this.price = price;
+		this.resId = resId;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -52,6 +63,14 @@ public class Basket {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public String getResId() {
+		return resId;
+	}
+
+	public void setResId(String resId) {
+		this.resId = resId;
 	}
 	
 	

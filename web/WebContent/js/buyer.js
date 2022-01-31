@@ -43,6 +43,7 @@ function getPersonalInfo(){
         success: function (getInfo, textStatus, XMLHttpRequest) {
             
         	username.val(getInfo.username);
+        	console.log(getInfo.username)
             name.val(getInfo.name);
             surname.val(getInfo.surname);
             if(getInfo.gender === "MALE")
@@ -52,7 +53,10 @@ function getPersonalInfo(){
             else
                 gender.val('3')
             console.log(gender);
-        }
+        },
+    	failure: function(data){
+    		console.log("kitaaaaa")
+    	}
     })
 }
 

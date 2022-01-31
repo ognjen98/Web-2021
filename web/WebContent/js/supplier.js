@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    let infoForm = $("#infoForm")
-	getPersonalInfo();
+    //let infoForm = $("#infoForm")
+	//getPersonalInfoSup();
     
-    infoForm.submit(function(event){
-        event.preventDefault();
-        changeInfo();
-    })
+//    infoForm.submit(function(event){
+//        event.preventDefault();
+//        changeInfo();
+//    })
 	
 	logoutSup();
 
@@ -30,7 +30,7 @@ function logoutSup() {
 
 }
 
-function getPersonalInfo(){
+function getPersonalInfoSup(){
     
     let name = $("#name");
     let surname = $("#surname");

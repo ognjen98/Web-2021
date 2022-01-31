@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Order {
 
-	private String id;
+	private Integer id;
 	private String uniqueId;
 	private List<Article> articles;
 	private Restaurant restaurant;
@@ -18,7 +18,7 @@ public class Order {
 		super();
 	}
 
-	public Order(String id, String uniqueId, List<Article> articles, Restaurant restaurant, Date dateOfOrder,
+	public Order(Integer id, String uniqueId, List<Article> articles, Restaurant restaurant, Date dateOfOrder,
 			Double price, Buyer buyer, OrderStatus status) {
 		super();
 		this.id = id;
@@ -31,11 +31,11 @@ public class Order {
 		this.status = status;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

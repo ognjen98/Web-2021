@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    let infoForm = $("#infoForm")
-	getPersonalInfo();
-    
-    infoForm.submit(function(event){
-        event.preventDefault();
-        changeInfo();
-    })
+   // let infoForm = $("#infoForm")
+//	getPersonalInfoMan();
+//    
+//    infoForm.submit(function(event){
+//        event.preventDefault();
+//        changeInfo();
+//    })
 	
 	logoutManager();
     goToRestaurant();
@@ -42,7 +42,7 @@ function goToRestaurant(){
     })
 }
 
-function getPersonalInfo(){
+function getPersonalInfoMan(){
     
     let name = $("#name");
     let surname = $("#surname");
