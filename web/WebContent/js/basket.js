@@ -11,6 +11,28 @@ $(document).ready(function () {
 
     table = $("#artTable");
     getBasket(table);
+    createOrder();
+//    let tot = $("#totPrice");
+//	let sum = 0;
+//	let i = 0;
+//	console.log("caos")
+//	console.log($("#quan1").val())
+//	$("#quan1").change(function(event){
+//		console.log("caosssss")
+//		$("tr.article").each(function() {
+//			
+//	    	let pr = $(this).find("#articlePrice"+i).html();
+//	    	let qua = $("#quan"+i).val();
+//	    	
+//	        	
+//	       
+//		
+//		    sum += pr * qua;
+//		    i++;
+//		});
+//		tot.text(sum);
+//		console.log(sum)
+//	});
 });
 
 
@@ -35,20 +57,21 @@ function logoutUser() {
 function createOrder(){
 	
 	
-	$("#basketBtn").click(function(event){
+	$("#btnOrder").click(function(event){
     	event.preventDefault();
-    	i = 0;
-    	quants = 0;
+    	let i = 0;
+    	quants = [];
     	artData = {
-            	items: [],
+            	articles: [],
             	buyer: $("#usernameInfo").val(),
-                resId: $("#restaurantId").text(),
+                res: $("#rest").text(),
+                price: $("#totPrice").text()
                 
             }
     	
     	$("tr.article").each(function() {
-    		if($("#quan"+i).val() != 0){
-	            artData.items.push({
+    		
+	            artData.articles.push({
 	            	name: $(this).find("#articleName"+i).html(),
 	            	price: $(this).find("#articlePrice"+i).html(),
 	            	type: $(this).find("#articleType"+i).html(),
@@ -59,10 +82,18 @@ function createOrder(){
 	            	image: $(this).find("#articleImage"+i).prop('src')
 	            	
 	            });
-    		}
-            quants += $("#quan"+i).val();
+    		
+            quants.push( $("#quan"+i).val());
             i++;
     	});
+    	
+    	for(j = 0; j < quants.length;j++){
+    		if(quants[j] == 0){
+    			alert("Kolicina ne sme biti nula");
+    			
+    			return;
+    		}
+    	}
 
     	console.log(artData)
     	if(quants == 0){
@@ -71,16 +102,16 @@ function createOrder(){
     	}
         $.ajax({
             type: "POST",
-            url: "rest/order/createBasket",
+            url: "rest/order/createOrder",
             contentType: "application/json",
             data: JSON.stringify(artData),
             success: function (data) {
               //alert($("#managerSelect").val());
             	//window.location.href = "basket.html";
+            },
+            error: function(data){
+            	alert("Restoran je zatvoren");
             }
-//            failure: function(data){
-//            	alert($("#managerSelect").val());
-//            }
         });
 //        return false
     })
@@ -164,13 +195,15 @@ function createArticleTable(table,basket){
     table.append('<thead class="thead-dark"><tr><th>Image</th><th>Name</th><th>Price</th><th>Type</th><th>Description</th><th>Measurement</th><th class="inputCol" ></th></tr></thead>');
     for(let item of basket.items){
         table.append('<tr class="article"><td><img src="' + item.article.image + '" height="50" width="50" id="articleImage'+i+'">'+'</td>'
-        +'<td id="articleName'+i+'">'+item.article.name+'</td>'+'<td id="articlePrice'+i+'">'+item.article.price+'</td>'+'<td id="articleType'+i+'">'+item.article.type+'</td>' +'<td id="articleDesc'+i+'">'+item.article.description+'</td>' +'<td id="articleQuan'+i+'">'+item.article.quantity+'</td>'+'<td class="inputCol" ><input type="text" id="quan'+i+'" value="'+item.quantity+'">'+'</td></tr>');
+        +'<td id="articleName'+i+'">'+item.article.name+'</td>'+'<td id="articlePrice'+i+'">'+item.article.price+'</td>'+'<td id="articleType'+i+'">'+item.article.type+'</td>' +'<td id="articleDesc'+i+'">'+item.article.description+'</td>' +'<td id="articleQuan'+i+'">'+item.article.quantity+'</td>'+'<td class="inputCol" ><input type="text" class="inputs" id="quan'+i+'" value="'+item.quantity+'">'+'</td></tr>');
         
         i++;
        
     }
     let buyer = $("#buyer");
     let res = $("#rest");
+    let price = $("#totPrice");
+    price.text(basket.price);
     buyer.text(basket.buyer.username);
     console.log(basket.buyer.username)
     res.text(basket.resId);

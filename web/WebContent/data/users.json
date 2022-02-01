@@ -1,13 +1,4 @@
 {
-  "user2" : {
-    "username" : "user2",
-    "password" : "123",
-    "name" : "Sabo",
-    "surname" : "Milosevic",
-    "gender" : "FEMALE",
-    "dateOfBirth" : 1641942000000,
-    "role" : "BUYER"
-  },
   "manager" : {
     "username" : "manager",
     "password" : "123",
@@ -44,15 +35,6 @@
     "dateOfBirth" : 1665007200000,
     "role" : "MANAGER"
   },
-  "user" : {
-    "username" : "user",
-    "password" : "123",
-    "name" : "Uadqwe",
-    "surname" : "Sdadjwj",
-    "gender" : "MALE",
-    "dateOfBirth" : 1641942000000,
-    "role" : "BUYER"
-  },
   "manager2" : {
     "username" : "manager2",
     "password" : "123",
@@ -61,5 +43,14 @@
     "gender" : "MALE",
     "dateOfBirth" : 1664316000000,
     "role" : "MANAGER"
+  },
+  "user" : {
+    "username" : "user",
+    "password" : "123",
+    "name" : "User",
+    "surname" : "Savic",
+    "gender" : "FEMALE",
+    "dateOfBirth" : 1613084400000,
+    "role" : "BUYER"
   }
 }

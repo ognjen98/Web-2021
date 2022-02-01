@@ -17,9 +17,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import beans.Buyer;
+import beans.BuyerType;
 import beans.Manager;
 import beans.Role;
 import beans.Supplier;
+import beans.TypeName;
 import beans.User;
 import dao.impl.BuyerDAOImpl;
 import dao.impl.ManagerDAOImpl;
@@ -69,7 +71,8 @@ public class RegistrationService {
 		}
 		user.setRole(Role.BUYER);
 		userDAO.add(user);
-		Buyer buyer = new Buyer(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getDateOfBirth(), user.getRole());
+		BuyerType bt = new BuyerType(TypeName.BRONZE, 0.0, 0);
+		Buyer buyer = new Buyer(user.getUsername(), user.getPassword(), user.getName(), user.getSurname(), user.getGender(), user.getDateOfBirth(), user.getRole(), 0.0, bt);
 		BuyerDAOImpl buyerDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
 		buyerDAO.add(buyer);
 		

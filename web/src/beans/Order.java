@@ -7,7 +7,7 @@ public class Order {
 
 	private Integer id;
 	private String uniqueId;
-	private List<Article> articles;
+	private List<BasketItem> articles;
 	private Restaurant restaurant;
 	private Date dateOfOrder;
 	private Double price;
@@ -18,10 +18,22 @@ public class Order {
 		super();
 	}
 
-	public Order(Integer id, String uniqueId, List<Article> articles, Restaurant restaurant, Date dateOfOrder,
+	public Order(Integer id, String uniqueId, List<BasketItem> articles, Restaurant restaurant, Date dateOfOrder,
 			Double price, Buyer buyer, OrderStatus status) {
 		super();
 		this.id = id;
+		this.uniqueId = uniqueId;
+		this.articles = articles;
+		this.restaurant = restaurant;
+		this.dateOfOrder = dateOfOrder;
+		this.price = price;
+		this.buyer = buyer;
+		this.status = status;
+	}
+	
+	public Order(String uniqueId, List<BasketItem> articles, Restaurant restaurant, Date dateOfOrder,
+			Double price, Buyer buyer, OrderStatus status) {
+		super();
 		this.uniqueId = uniqueId;
 		this.articles = articles;
 		this.restaurant = restaurant;
@@ -47,11 +59,11 @@ public class Order {
 		this.uniqueId = uniqueId;
 	}
 
-	public List<Article> getArticles() {
+	public List<BasketItem> getArticles() {
 		return articles;
 	}
 
-	public void setArticles(List<Article> articles) {
+	public void setArticles(List<BasketItem> articles) {
 		this.articles = articles;
 	}
 

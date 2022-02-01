@@ -29,7 +29,7 @@ $(document).ready(function () {
             data: JSON.stringify(registerData),
             success: function (data) {
 
-
+            	alert("Successfully registered")
             }
         });
     });

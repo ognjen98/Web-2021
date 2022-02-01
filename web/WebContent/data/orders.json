@@ -1,3 +1,73 @@
 {
-
+  "1" : {
+    "id" : 1,
+    "uniqueId" : "qRIWQTReq2",
+    "articles" : [ {
+      "article" : {
+        "id" : null,
+        "name" : "jkdqwkdwm",
+        "price" : 200.0,
+        "type" : "FOOD",
+        "restaurant" : null,
+        "quantity" : "GR",
+        "description" : "admad,m",
+        "image" : "http://localhost:8082/web/data/images/45119fb0-0335-4e8b-8c97-0658da469366.png"
+      },
+      "quantity" : 3
+    } ],
+    "restaurant" : {
+      "id" : 1,
+      "name" : "Posejdon",
+      "type" : "MEXICAN",
+      "articles" : [ {
+        "id" : null,
+        "name" : "jkdqwkdwm",
+        "price" : 200.0,
+        "type" : "FOOD",
+        "restaurant" : null,
+        "quantity" : "GR",
+        "description" : "admad,m",
+        "image" : "http://localhost:8082/web/data/images/45119fb0-0335-4e8b-8c97-0658da469366.png"
+      } ],
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "Sremska Mitrovica",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/cd21f482-ef76-426e-b061-673970871ade.png",
+      "grade" : 1.0
+    },
+    "dateOfOrder" : 1643717497447,
+    "price" : 600.0,
+    "buyer" : {
+      "username" : "user",
+      "password" : "123",
+      "name" : "User",
+      "surname" : "Savic",
+      "gender" : "FEMALE",
+      "dateOfBirth" : 1613084400000,
+      "role" : "BUYER",
+      "orders" : [ ],
+      "basket" : {
+        "id" : null,
+        "items" : null,
+        "buyer" : null,
+        "price" : null,
+        "resId" : null
+      },
+      "points" : 3279.8,
+      "buyerType" : {
+        "type" : "SILVER",
+        "discount" : 0.03,
+        "points" : 3001
+      }
+    },
+    "status" : "PROCESSING"
+  }
 }
