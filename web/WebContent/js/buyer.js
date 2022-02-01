@@ -9,9 +9,19 @@ $(document).ready(function () {
 	
 	logoutUser();
 
-  
+    goToOrders();
 });
 
+function goToOrders(){
+	let username = $("#usernameInfo")
+	$("#ordersBtn").click(function () {
+        
+                
+        window.location.href = "orders.html?username=" + username.val();
+            
+        
+    })
+}
 
 function logoutUser() {
     let navbarUl = $("#navbarUl");

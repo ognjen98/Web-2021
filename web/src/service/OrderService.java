@@ -124,6 +124,34 @@ public class OrderService {
 	}
 	
 	
+
+//	@POST
+//	@Path("/cancelOrder")
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Response cancelOrder(String id) {
+//		BasketDAOImpl baskDAO = (BasketDAOImpl) ctx.getAttribute("basketDAO");
+//		
+//		List<BasketItem> bil = new ArrayList<BasketItem>();
+//		double price = 0;
+//		for(BasketItemDTO item : dto.getItems()) {
+//			ArticleType at = checkArticleType(item.getType());
+//			QuantityType qt = checkQuantity(item.getqType());
+//			Article a = new Article(item.getName(),item.getPrice(),at, qt, item.getDescription(), item.getImage());
+//			BasketItem bi = new BasketItem(a, item.getQuantity());
+//			bil.add(bi);
+//			price += item.getPrice() * item.getQuantity();
+//		}
+//		
+//		BuyerDAOImpl buyDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
+//		Buyer b = buyDAO.findByUsername(dto.getBuyer());
+//		Basket bask = new Basket(bil, b, price, dto.getResId());
+//		
+//		baskDAO.add(bask);
+//		return Response.ok().entity("Basket created").build();
+//		
+//	}
+	
+	
 	
 	@POST
 	@Path("/createOrder")
@@ -138,13 +166,14 @@ public class OrderService {
 			return Response.status(Response.Status.BAD_REQUEST).entity("Restoran je zatvoren").build();
 		}
 		List<BasketItem> bil = new ArrayList<BasketItem>();
-
+		double pr = 0;
 		for(BasketItemDTO item : dto.getArticles()) {
 			ArticleType at = checkArticleType(item.getType());
 			QuantityType qt = checkQuantity(item.getqType());
 			Article a = new Article(item.getName(),item.getPrice(),at, qt, item.getDescription(), item.getImage());
 			BasketItem bi = new BasketItem(a, item.getQuantity());
 			bil.add(bi);
+			pr += item.getPrice() * item.getQuantity();
 			
 		}
 		String uniqueId = generateRandomString();
@@ -165,7 +194,7 @@ public class OrderService {
 		}
 		
 		Buyer buy = new Buyer(b.getUsername(), b.getPassword(), b.getName(), b.getSurname(), b.getGender(), b.getDateOfBirth(), b.getRole(), b.getPoints(), b.getBuyerType());
-		Order o = new Order(uniqueId, bil, res, new Date(), dto.getPrice(), buy, OrderStatus.PROCESSING);
+		Order o = new Order(uniqueId, bil, res, new Date(), pr, buy, OrderStatus.PROCESSING);
 		
 		List<Order> lbi = b.getOrders();
 		lbi.add(o);
@@ -206,7 +235,7 @@ public class OrderService {
 			ManagerDAOImpl managerDAO = (ManagerDAOImpl) ctx.getAttribute("managerDAO");
 			Manager m = managerDAO.findByUsername(username);
 			for(Order o : allOrders) {
-				if(m.getRestaurant().equals(o.getRestaurant()))
+				if(m.getRestaurant().getId().equals(o.getRestaurant().getId()))
 					orders.add(o);
 			}
 		}

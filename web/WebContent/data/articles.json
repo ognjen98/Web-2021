@@ -82,5 +82,61 @@
     "quantity" : "GR",
     "description" : "kda;dk",
     "image" : "http://localhost:8082/web/data/images/0b330d09-b4d0-4d74-a957-22466228bdbb.png"
+  },
+  "4" : {
+    "id" : 4,
+    "name" : "svinjski but",
+    "price" : 1000.0,
+    "type" : "FOOD",
+    "restaurant" : {
+      "id" : 3,
+      "name" : "Xin Zhao",
+      "type" : "CHINESE",
+      "articles" : null,
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "Novi Sad",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
+      "grade" : 0.0
+    },
+    "quantity" : "GR",
+    "description" : "dobar vrlo",
+    "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+  },
+  "5" : {
+    "id" : 5,
+    "name" : "suvi vrat",
+    "price" : 500.0,
+    "type" : "FOOD",
+    "restaurant" : {
+      "id" : 3,
+      "name" : "Xin Zhao",
+      "type" : "CHINESE",
+      "articles" : null,
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "Novi Sad",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
+      "grade" : 0.0
+    },
+    "quantity" : "GR",
+    "description" : "ukusan",
+    "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
   }
 }

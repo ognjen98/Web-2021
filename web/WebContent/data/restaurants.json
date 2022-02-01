@@ -68,7 +68,25 @@
     "id" : 3,
     "name" : "Xin Zhao",
     "type" : "CHINESE",
-    "articles" : [ ],
+    "articles" : [ {
+      "id" : null,
+      "name" : "svinjski but",
+      "price" : 1000.0,
+      "type" : "FOOD",
+      "restaurant" : null,
+      "quantity" : "GR",
+      "description" : "dobar vrlo",
+      "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+    }, {
+      "id" : null,
+      "name" : "suvi vrat",
+      "price" : 500.0,
+      "type" : "FOOD",
+      "restaurant" : null,
+      "quantity" : "GR",
+      "description" : "ukusan",
+      "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+    } ],
     "status" : "OPENED",
     "location" : {
       "longitude" : null,

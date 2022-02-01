@@ -77,6 +77,349 @@
         }
       },
       "status" : "PROCESSING"
+    }, {
+      "id" : null,
+      "uniqueId" : "FMhmo3Hs49",
+      "articles" : [ {
+        "article" : {
+          "id" : null,
+          "name" : "jkdqwkdwm",
+          "price" : 200.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "admad,m",
+          "image" : "http://localhost:8082/web/data/images/45119fb0-0335-4e8b-8c97-0658da469366.png"
+        },
+        "quantity" : 2
+      } ],
+      "restaurant" : {
+        "id" : 1,
+        "name" : "Posejdon",
+        "type" : "MEXICAN",
+        "articles" : [ {
+          "id" : null,
+          "name" : "jkdqwkdwm",
+          "price" : 200.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "admad,m",
+          "image" : "http://localhost:8082/web/data/images/45119fb0-0335-4e8b-8c97-0658da469366.png"
+        } ],
+        "status" : "OPENED",
+        "location" : {
+          "longitude" : null,
+          "latitude" : null,
+          "address" : {
+            "streetName" : null,
+            "number" : null,
+            "city" : "Sremska Mitrovica",
+            "zipCode" : null
+          }
+        },
+        "image" : "http://localhost:8082/web/data/images/cd21f482-ef76-426e-b061-673970871ade.png",
+        "grade" : 1.0
+      },
+      "dateOfOrder" : 1643734433003,
+      "price" : 400.0,
+      "buyer" : {
+        "username" : "user",
+        "password" : "123",
+        "name" : "User",
+        "surname" : "Savic",
+        "gender" : "FEMALE",
+        "dateOfBirth" : 1613084400000,
+        "role" : "BUYER",
+        "orders" : [ ],
+        "basket" : {
+          "id" : null,
+          "items" : null,
+          "buyer" : null,
+          "price" : null,
+          "resId" : null
+        },
+        "points" : 3333.0,
+        "buyerType" : {
+          "type" : "SILVER",
+          "discount" : 0.03,
+          "points" : 3001
+        }
+      },
+      "status" : "PROCESSING"
+    }, {
+      "id" : null,
+      "uniqueId" : "0glsy06RXq",
+      "articles" : [ {
+        "article" : {
+          "id" : null,
+          "name" : "svinjski but",
+          "price" : 1000.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "dobar vrlo",
+          "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+        },
+        "quantity" : 5
+      }, {
+        "article" : {
+          "id" : null,
+          "name" : "suvi vrat",
+          "price" : 500.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "ukusan",
+          "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+        },
+        "quantity" : 3
+      } ],
+      "restaurant" : {
+        "id" : 3,
+        "name" : "Xin Zhao",
+        "type" : "CHINESE",
+        "articles" : [ {
+          "id" : null,
+          "name" : "svinjski but",
+          "price" : 1000.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "dobar vrlo",
+          "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+        }, {
+          "id" : null,
+          "name" : "suvi vrat",
+          "price" : 500.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "ukusan",
+          "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+        } ],
+        "status" : "OPENED",
+        "location" : {
+          "longitude" : null,
+          "latitude" : null,
+          "address" : {
+            "streetName" : null,
+            "number" : null,
+            "city" : "Novi Sad",
+            "zipCode" : null
+          }
+        },
+        "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
+        "grade" : 0.0
+      },
+      "dateOfOrder" : 1643734623246,
+      "price" : 9500.0,
+      "buyer" : {
+        "username" : "user",
+        "password" : "123",
+        "name" : "User",
+        "surname" : "Savic",
+        "gender" : "FEMALE",
+        "dateOfBirth" : 1613084400000,
+        "role" : "BUYER",
+        "orders" : [ ],
+        "basket" : {
+          "id" : null,
+          "items" : null,
+          "buyer" : null,
+          "price" : null,
+          "resId" : null
+        },
+        "points" : 4596.5,
+        "buyerType" : {
+          "type" : "GOLD",
+          "discount" : 0.05,
+          "points" : 4001
+        }
+      },
+      "status" : "PROCESSING"
+    }, {
+      "id" : null,
+      "uniqueId" : "96GeVAKKgE",
+      "articles" : [ {
+        "article" : {
+          "id" : null,
+          "name" : "svinjski but",
+          "price" : 1000.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "dobar vrlo",
+          "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+        },
+        "quantity" : 2
+      }, {
+        "article" : {
+          "id" : null,
+          "name" : "suvi vrat",
+          "price" : 500.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "ukusan",
+          "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+        },
+        "quantity" : 5
+      } ],
+      "restaurant" : {
+        "id" : 3,
+        "name" : "Xin Zhao",
+        "type" : "CHINESE",
+        "articles" : [ {
+          "id" : null,
+          "name" : "svinjski but",
+          "price" : 1000.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "dobar vrlo",
+          "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+        }, {
+          "id" : null,
+          "name" : "suvi vrat",
+          "price" : 500.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "ukusan",
+          "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+        } ],
+        "status" : "OPENED",
+        "location" : {
+          "longitude" : null,
+          "latitude" : null,
+          "address" : {
+            "streetName" : null,
+            "number" : null,
+            "city" : "Novi Sad",
+            "zipCode" : null
+          }
+        },
+        "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
+        "grade" : 0.0
+      },
+      "dateOfOrder" : 1643735765567,
+      "price" : 10500.0,
+      "buyer" : {
+        "username" : "user",
+        "password" : "123",
+        "name" : "User",
+        "surname" : "Savic",
+        "gender" : "FEMALE",
+        "dateOfBirth" : 1613084400000,
+        "role" : "BUYER",
+        "orders" : [ ],
+        "basket" : {
+          "id" : null,
+          "items" : null,
+          "buyer" : null,
+          "price" : null,
+          "resId" : null
+        },
+        "points" : 5993.0,
+        "buyerType" : {
+          "type" : "GOLD",
+          "discount" : 0.05,
+          "points" : 4001
+        }
+      },
+      "status" : "PROCESSING"
+    }, {
+      "id" : null,
+      "uniqueId" : "j5m4Lya2Ic",
+      "articles" : [ {
+        "article" : {
+          "id" : null,
+          "name" : "svinjski but",
+          "price" : 1000.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "dobar vrlo",
+          "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+        },
+        "quantity" : 1
+      }, {
+        "article" : {
+          "id" : null,
+          "name" : "suvi vrat",
+          "price" : 500.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "ukusan",
+          "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+        },
+        "quantity" : 1
+      } ],
+      "restaurant" : {
+        "id" : 3,
+        "name" : "Xin Zhao",
+        "type" : "CHINESE",
+        "articles" : [ {
+          "id" : null,
+          "name" : "svinjski but",
+          "price" : 1000.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "dobar vrlo",
+          "image" : "http://localhost:8082/web/data/images/ac6cd078-e3bf-4329-aa0b-c7efbd11568a.png"
+        }, {
+          "id" : null,
+          "name" : "suvi vrat",
+          "price" : 500.0,
+          "type" : "FOOD",
+          "restaurant" : null,
+          "quantity" : "GR",
+          "description" : "ukusan",
+          "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+        } ],
+        "status" : "OPENED",
+        "location" : {
+          "longitude" : null,
+          "latitude" : null,
+          "address" : {
+            "streetName" : null,
+            "number" : null,
+            "city" : "Novi Sad",
+            "zipCode" : null
+          }
+        },
+        "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
+        "grade" : 0.0
+      },
+      "dateOfOrder" : 1643736007617,
+      "price" : 1500.0,
+      "buyer" : {
+        "username" : "user",
+        "password" : "123",
+        "name" : "User",
+        "surname" : "Savic",
+        "gender" : "FEMALE",
+        "dateOfBirth" : 1613084400000,
+        "role" : "BUYER",
+        "orders" : [ ],
+        "basket" : {
+          "id" : null,
+          "items" : null,
+          "buyer" : null,
+          "price" : null,
+          "resId" : null
+        },
+        "points" : 6458.5,
+        "buyerType" : {
+          "type" : "GOLD",
+          "discount" : 0.05,
+          "points" : 4001
+        }
+      },
+      "status" : "PROCESSING"
     } ],
     "basket" : {
       "id" : null,
@@ -85,11 +428,11 @@
       "price" : null,
       "resId" : null
     },
-    "points" : 3279.8,
+    "points" : 6458.5,
     "buyerType" : {
-      "type" : "SILVER",
-      "discount" : 0.03,
-      "points" : 3001
+      "type" : "GOLD",
+      "discount" : 0.05,
+      "points" : 4001
     }
   }
 }
