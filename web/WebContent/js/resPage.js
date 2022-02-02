@@ -90,7 +90,7 @@ function createBasket(){
 	            	name: $(this).find("#articleName"+i).html(),
 	            	price: $(this).find("#articlePrice"+i).html(),
 	            	type: $(this).find("#articleType"+i).html(),
-	            	qType: $(this).find("#articleQuan"+i).html(),
+	            	qType: $(this).find("#articleQuan"+i).html().substring(4),
 	            	description: $(this).find("#articleDesc"+i).html(),
 	            	
 	            	quantity: $("#quan"+i).val(),
@@ -252,7 +252,7 @@ function createArticleTable(table,articles,role){
     table.append('<thead class="thead-dark"><tr><th>Image</th><th>Name</th><th>Price</th><th>Type</th><th>Description</th><th>Measurement</th><th class="inputCol" ></th></tr></thead>');
     for(let article of articles){
         table.append('<tr class="article"><td><img src="' + article.image + '" height="50" width="50" id="articleImage'+i+'">'+'</td>'
-        +'<td id="articleName'+i+'">'+article.name+'</td>'+'<td id="articlePrice'+i+'">'+article.price+'</td>'+'<td id="articleType'+i+'">'+article.type+'</td>' +'<td id="articleDesc'+i+'">'+article.description+'</td>' +'<td id="articleQuan'+i+'">'+article.quantity+'</td>'+'<td class="inputCol" ><input style="display:none" type="text" id="quan'+i+'" value="0">'+'</td></tr>');
+        +'<td id="articleName'+i+'">'+article.name+'</td>'+'<td id="articlePrice'+i+'">'+article.price+'</td>'+'<td id="articleType'+i+'">'+article.type+'</td>' +'<td id="articleDesc'+i+'">'+article.description+'</td>' +'<td id="articleQuan'+i+'">100 '+article.quantity+'</td>'+'<td class="inputCol" ><input style="display:none" type="text" id="quan'+i+'" value="0">'+'</td></tr>');
         if(role == "BUYER"){
         	$("#quan" + i ).css("display","block");
         }

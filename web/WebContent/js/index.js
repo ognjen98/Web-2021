@@ -79,8 +79,8 @@ function createRestaurantCards(restaurants, resCards) {
                     '<div class="col-sm-7">' +
                     '<div class="card-body">' +
                     '<h4 class="card-title">' + restaurant.name + '</h4>' +
-                    '<h5>' + restaurant.location.address.streetName + " " + restaurant.location.address.number + " " + restaurant.location.address.number + '</h5>' + 
-                    '<h6>' + restaurant.location.address.city + " " + restaurant.location.address.number + " " + restaurant.location.address.zipCode + '</h6>' + 
+                    '<h5>' + restaurant.location.address.streetName + " " + restaurant.location.address.number + '</h5>' + 
+                    '<h6>' + restaurant.location.address.city + " " + restaurant.location.address.zipCode + '</h6>' + 
                     '<p class="card-text" style="color: #868e96;">' + restaurant.location.latitude + "," + restaurant.location.longitude + '</p>' +
                     '<p class="card-text">Restaurant type: ' + restaurant.type + '</p>' + 
                     '<p class="card-text">Grade: ' + restaurant.grade + '</p>' + 

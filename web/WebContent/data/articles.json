@@ -138,5 +138,61 @@
     "quantity" : "GR",
     "description" : "ukusan",
     "image" : "http://localhost:8082/web/data/images/4ae4b4b0-8840-47ee-874b-f7a32784baa6.png"
+  },
+  "6" : {
+    "id" : 6,
+    "name" : "Pire",
+    "price" : 200.0,
+    "type" : "FOOD",
+    "restaurant" : {
+      "id" : 4,
+      "name" : "Sokol",
+      "type" : "MEXICAN",
+      "articles" : null,
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "tuzla",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/5acd8a35-26b4-4444-a61d-2aa3e399d23b.jpg",
+      "grade" : 0.0
+    },
+    "quantity" : "GR",
+    "description" : "dobar",
+    "image" : "http://localhost:8082/web/data/images/71e4357e-700d-4185-aa27-ef7a147d0113.png"
+  },
+  "7" : {
+    "id" : 7,
+    "name" : "Supa",
+    "price" : 100.0,
+    "type" : "DRINK",
+    "restaurant" : {
+      "id" : 4,
+      "name" : "Sokol",
+      "type" : "MEXICAN",
+      "articles" : null,
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "tuzla",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/5acd8a35-26b4-4444-a61d-2aa3e399d23b.jpg",
+      "grade" : 0.0
+    },
+    "quantity" : "ML",
+    "description" : "lepa",
+    "image" : "http://localhost:8082/web/data/images/920142b3-3d26-48bf-89f3-a446c309a147.png"
   }
 }

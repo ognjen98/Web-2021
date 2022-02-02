@@ -17,16 +17,26 @@ $(document).ready(function () {
     
 	logoutAdmin();
 	
-	$("#restaurantBtn").click(function(event){
-		event.stopImmediatePropagation();
-	       //getManagersWithoutRestaurants(resDiv);
-		createRestaurantForm(resDiv);
-	       
-	}) 
+//	$("#restaurantBtn").click(function(event){
+//		event.stopImmediatePropagation();
+//	       //getManagersWithoutRestaurants(resDiv);
+//		createRestaurantForm(resDiv);
+//	       
+//	}) 
+	getManagersWithoutRestaurants(resDiv);
 	createRestaurant();
 	
     $("#usersBtn").click(function(){
+    	$("#restaurants").css("display", "none");
+    	$("#closed").css("display", "none");
+    	$("#userTable").css("visibility","visible");
         getUsers(userTable);
+    })
+    
+    $("#home").click(function(){
+    	$("#restaurants").css("display", "block");
+    	$("#closed").css("display", "block");
+    	$("#userTable").css("visibility","hidden");
     })
 
 
@@ -122,9 +132,9 @@ function createRestaurant(){
     let logo = $("#logo");
     resForm.submit(function(event){
     	event.preventDefault();
-    	event.stopPropagation();
+    	//event.stopPropagation();
         resData = {
-        	//manager: $("#managerSelect").val(),
+        	manager: $("#managerSelect").val(),
         	resName: $("#resName").val(),
             location: $("#location").val(),
             type: ($("#type option:selected").text()).toUpperCase()
@@ -144,14 +154,14 @@ function createRestaurant(){
             contentType: false,
             data: formData,
             success: function (data) {
-              //alert($("#managerSelect").val());
+              alert($("#managerSelect").val());
     
+            },
+            failure: function(data){
+            	alert($("#managerSelect").val());
             }
-//            failure: function(data){
-//            	alert($("#managerSelect").val());
-//            }
         });
-//        return false
+       return false
     })
     
 }
@@ -194,11 +204,17 @@ function createRestaurantForm(resDiv){
 
 
 function getManagersWithoutRestaurants(resDiv){
-    $.ajax({
+	$.ajax({
         type: "GET",
         url: "rest/restaurant/getManagers",
         success: function (managers) {
-        	createRestaurantForm(resDiv,managers)
+        	//createRestaurantForm(resDiv,managers)
+        	let managerSelect = $("#managerSelect");
+        	   managerSelect.empty();
+        	   managers.forEach(element => {
+        	       console.log(element);
+        	       managerSelect.append('<option value="' + element+'">'+element + '</option>')
+        	   });
         }
     })
 }

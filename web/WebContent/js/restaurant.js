@@ -76,15 +76,6 @@ function createUserTable(userTable,getAll){
 }
 
 
-function addRestaurant(resDiv){
-   $("#restaurantBtn").click(function(event){
-	   //event.stopImmediatePropagation();
-       getManagersWithoutRestaurants(resDiv);
-       createRestaurant();
-   }) 
-
-}
-
 function createManagerSupplier(){
     let createForm = $("#createForm");
     createForm.submit(function (event) {

@@ -195,7 +195,7 @@ function createArticleTable(table,basket){
     table.append('<thead class="thead-dark"><tr><th>Image</th><th>Name</th><th>Price</th><th>Type</th><th>Description</th><th>Measurement</th><th class="inputCol" ></th></tr></thead>');
     for(let item of basket.items){
         table.append('<tr class="article"><td><img src="' + item.article.image + '" height="50" width="50" id="articleImage'+i+'">'+'</td>'
-        +'<td id="articleName'+i+'">'+item.article.name+'</td>'+'<td id="articlePrice'+i+'">'+item.article.price+'</td>'+'<td id="articleType'+i+'">'+item.article.type+'</td>' +'<td id="articleDesc'+i+'">'+item.article.description+'</td>' +'<td id="articleQuan'+i+'">'+item.article.quantity+'</td>'+'<td class="inputCol" ><input type="text" class="inputs" id="quan'+i+'" value="'+item.quantity+'">'+'</td></tr>');
+        +'<td id="articleName'+i+'">'+item.article.name+'</td>'+'<td id="articlePrice'+i+'">'+item.article.price+'</td>'+'<td id="articleType'+i+'">'+item.article.type+'</td>' +'<td id="articleDesc'+i+'">'+item.article.description+'</td>' +'<td id="articleQuan'+i+'">100 '+item.article.quantity+'</td>'+'<td class="inputCol" ><input type="text" class="inputs" id="quan'+i+'" value="'+item.quantity+'">'+'</td></tr>');
         
         i++;
        

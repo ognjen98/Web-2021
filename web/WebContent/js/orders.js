@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     let infoForm = $("#infoForm")
 	getPersonalInfo();
@@ -11,9 +12,52 @@ $(document).ready(function () {
     
     getOrders(orderCards);
 	logoutUser();
-
-  
+	
+	console.log($(".buttons"))
+	//cancelOrder();
 });
+
+
+
+function changeOrderMan(){
+	$(".buttonsCha").click(function(){
+		let id = this.id.substring(9);
+		console.log(id);
+		$.ajax({
+	        type: "POST",
+	        url: "rest/order/changeOrderManager/"+id,
+	        contentType: "application/json",
+	        
+	        success: function (data) {
+	            
+	        },
+	        error:function(data){
+	        	alert("Nije moguce azurirati narudzbinu")
+	        }
+	    })
+	})
+}
+
+
+function cancelOrder(){
+	$(".buttonsCan").click(function(){
+		let id = this.id.substring(9);
+		console.log(id);
+		$.ajax({
+	        type: "POST",
+	        url: "rest/order/cancelOrder/"+id,
+	        contentType: "application/json",
+	        
+	        success: function (data) {
+	            
+	        },
+	        error:function(data){
+	        	alert("Nije moguce ponistiti narudzbinu")
+	        }
+	    })
+	})
+	
+}
 
 
 function logoutUser() {
@@ -92,7 +136,8 @@ function getOrders(orderCards){
         success: function (data, textStatus, XMLHttpRequest) {
         	console.log(data);
         	createOrderCards(data,orderCards);
-        	
+        	cancelOrder();
+        	changeOrderMan();
         	
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -105,11 +150,60 @@ function getOrders(orderCards){
 
 
 function createOrderCards(orders, orderCards) {
-    let k = 0;
+	var user = $.ajax({
+        type: "GET",
+        url: "rest/login/user",
+        cache: false,
+        async:false,
+        success: function (data, textStatus, XMLHttpRequest) {
+        	return data;
+        	//console.log(user.role);
+        	
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            
+        }
+        
+    }).responseText;
+    
+    //let role = user.role;
+    console.log(user);
+    let userObj;
+    let role;
+    
+    if(user != ""){
+    	userObj = JSON.parse(user);
+    	role = userObj.role;
+        console.log(role);
+    }
+
+    
+    if(user != ""){
+	    if(role == "ADMIN"){
+	    	$("#navbarUlAdmin").css("display", "block");
+	    }
+	    else if(role == "BUYER"){
+	    	$("#navbarUlUser").css("display", "block");
+	    	$("#basketBtn").css("display","block");
+	    	createBasket();
+	    }
+	    else if(role == "MANAGER"){
+	    	$("#navbarUlManager").css("display", "block");
+	    	
+	    }
+	    else if(role == "SUPPLIER"){
+	    	$("#navbarUlSupplier").css("display", "block");
+	    }
+    }
+    else{
+    	$("#navbarUlNoUser").css("display", "block");
+    }
     orderCards.empty();
+    let k = 0;
             for (let order of orders) {
             	let orderDate = new Date(order.dateOfOrder);
             	let date = $.date(orderDate);
+            	let id = order.uniqueId;
             	orderCards.append('<div class="card card-custom card-custom-apartment" style="width: 50rem; margin-bottom: 50px;">' +
                     '<div class="row no-gutters" style="border-radius: 25px;">'+ 
                     
@@ -123,10 +217,13 @@ function createOrderCards(orders, orderCards) {
                     '</div>' +
                     '</div>' +
                     '</div>' +
-                    '<span style="visibility:hidden">' +order.uniqueId+'</span>'+
+                    '<span style="visibility:hidden" id="id'+k+'">' +order.uniqueId+'</span>'+
                     '<span>' +
-                    '<button type="submit" class="btn btn-primary " id="btnCancel'+k+'" style="margin-bottom:20px">Cancel order</button>'+
+                    '<button type="submit" class="btn btn-primary buttonsCan" id="btnCancel'+id+'"' + ' style="margin-bottom:20px;display:none">Cancel order</button>'+
                     '</span>' + 
+                    '<span>' +
+                    '<button type="submit" class="btn btn-primary buttonsCha" id="btnChange'+id+'"' + ' style="margin-bottom:20px;display:none">Change order</button>'+
+                    '</span>' +
                     '<table id="articleTable'+k+'"><thead class="thead-dark"><tr><th>Article</th><th>Price</th><th>Quantity</th></tr></thead>'+ '</table>'+
                     '</div>');
                     let table = $("#articleTable"+k)
@@ -136,8 +233,32 @@ function createOrderCards(orders, orderCards) {
                     	        
                     	
                     }
+                    
+                    if(user != ""){
+                	    if(role == "ADMIN"){
+                	    	//$("#navbarUlAdmin").css("display", "block");
+                	    }
+                	    else if(role == "BUYER"){
+////                	    	$("#navbarUlUser").css("display", "block");
+////                	    	$("#basketBtn").css("display","block");
+//                	    	createBasket();
+                	    	$("#btnCancel"+id).css("display","block")
+                	    	
+                	    }
+                	    else if(role == "MANAGER"){
+                	    	//$("#navbarUlManager").css("display", "block");
+                	    	$("#btnChange"+id).css("display","block")
+                	    }
+                	    else if(role == "SUPPLIER"){
+                	    	//$("#navbarUlSupplier").css("display", "block");
+                	    }
+                    }
+                    else{
+                    	//$("#navbarUlNoUser").css("display", "block");
+                    }
                     k++;
             }
+          
 }
 
 

@@ -186,4 +186,14 @@ public class OrderDAOImpl implements OrderDAO{
 		
 	
 	}
+
+	@Override
+	public Order findByUniqueId(String id) {
+		for(Order value: restaurants.values()) {
+			if(value.getUniqueId().equals(id)) {
+				return value;
+			}
+		}
+		return null;
+	}
 }

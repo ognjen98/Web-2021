@@ -24,7 +24,35 @@
         }
       },
       "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
-      "grade": 0.0
+      "grade" : 0.0
+    }
+  },
+  "mana" : {
+    "username" : "mana",
+    "password" : "123",
+    "name" : "kadad",
+    "surname" : "qoeqpeo",
+    "gender" : "FEMALE",
+    "dateOfBirth" : 1613084400000,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "id" : 4,
+      "name" : "Sokol",
+      "type" : "MEXICAN",
+      "articles" : [ ],
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : null,
+        "latitude" : null,
+        "address" : {
+          "streetName" : null,
+          "number" : null,
+          "city" : "tuzla",
+          "zipCode" : null
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/5acd8a35-26b4-4444-a61d-2aa3e399d23b.jpg",
+      "grade" : 0.0
     }
   },
   "man" : {
@@ -52,7 +80,35 @@
         }
       },
       "image" : "http://localhost:8082/web/data/images/6cf11bbf-78aa-4970-800c-91596dadd61d.png",
-      "grade": 2.5
+      "grade" : 2.5
+    }
+  },
+  "mani" : {
+    "username" : "mani",
+    "password" : "123",
+    "name" : "Mani",
+    "surname" : "Jovci",
+    "gender" : "FEMALE",
+    "dateOfBirth" : 1661983200000,
+    "role" : "MANAGER",
+    "restaurant" : {
+      "id" : 5,
+      "name" : "Dodik",
+      "type" : "FAST_FOOD",
+      "articles" : [ ],
+      "status" : "OPENED",
+      "location" : {
+        "longitude" : 25.0,
+        "latitude" : 22.0,
+        "address" : {
+          "streetName" : "Knez Mihailova",
+          "number" : "25",
+          "city" : "Beograd",
+          "zipCode" : "11000"
+        }
+      },
+      "image" : "http://localhost:8082/web/data/images/e30d3deb-47ae-432a-9c9b-6103fbf16650.png",
+      "grade" : 0.0
     }
   },
   "manager2" : {
@@ -80,7 +136,7 @@
         }
       },
       "image" : "http://localhost:8082/web/data/images/cd21f482-ef76-426e-b061-673970871ade.png",
-      "grade": 1.0
+      "grade" : 1.0
     }
   }
 }

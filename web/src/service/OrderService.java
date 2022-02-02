@@ -125,32 +125,82 @@ public class OrderService {
 	
 	
 
-//	@POST
-//	@Path("/cancelOrder")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public Response cancelOrder(String id) {
-//		BasketDAOImpl baskDAO = (BasketDAOImpl) ctx.getAttribute("basketDAO");
-//		
-//		List<BasketItem> bil = new ArrayList<BasketItem>();
-//		double price = 0;
-//		for(BasketItemDTO item : dto.getItems()) {
-//			ArticleType at = checkArticleType(item.getType());
-//			QuantityType qt = checkQuantity(item.getqType());
-//			Article a = new Article(item.getName(),item.getPrice(),at, qt, item.getDescription(), item.getImage());
-//			BasketItem bi = new BasketItem(a, item.getQuantity());
-//			bil.add(bi);
-//			price += item.getPrice() * item.getQuantity();
-//		}
-//		
-//		BuyerDAOImpl buyDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
-//		Buyer b = buyDAO.findByUsername(dto.getBuyer());
-//		Basket bask = new Basket(bil, b, price, dto.getResId());
-//		
-//		baskDAO.add(bask);
-//		return Response.ok().entity("Basket created").build();
-//		
-//	}
+	@POST
+	@Path("/cancelOrder/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response cancelOrder(@PathParam("id") String id) {
+		OrderDAOImpl orderDAO = (OrderDAOImpl) ctx.getAttribute("orderDAO");
+		Order o = orderDAO.findByUniqueId(id);
+		System.out.println(o.getUniqueId());
+		if(!o.getStatus().equals(OrderStatus.PROCESSING)) {
+			return Response.status(Response.Status.BAD_REQUEST).entity("Nije moguce ponistiti narudzbinu").build();
+		}
+		o.setStatus(OrderStatus.CANCELLED);
+		BuyerDAOImpl buyDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
+		Buyer b = buyDAO.findByUsername(o.getBuyer().getUsername());
+		double points = b.getPoints();
+		points -= o.getPrice()/1000 * 133 * 4;
+		b.setPoints(points);
+		if(points > 3000 && points <= 4000) {
+			BuyerType bt = new BuyerType(TypeName.SILVER, 0.03, 3001);
+			b.setBuyerType(bt);
+		}
+		else if(points > 4000) {
+			BuyerType bt = new BuyerType(TypeName.GOLD, 0.05, 4001);
+			b.setBuyerType(bt);
+		}
+		else if(points <= 3000) {
+			BuyerType bt = new BuyerType(TypeName.BRONZE, 0.0, 1);
+			b.setBuyerType(bt);
+		}
+		
+		Collection<Order> orders = b.getOrders();
+		for(Order or : orders) {
+			if(or.getUniqueId().equals(id))
+				or.setStatus(OrderStatus.CANCELLED);
+		}
+		b.setOrders((List<Order>) orders);
+		buyDAO.update(b);
+		orderDAO.update(o);
+		return Response.ok().entity("Narudzbina ponistena").build();
+		
+	}
 	
+	
+	@POST
+	@Path("/changeOrderManager/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response changeOrderManager(@PathParam("id") String id) {
+		OrderDAOImpl orderDAO = (OrderDAOImpl) ctx.getAttribute("orderDAO");
+		Order o = orderDAO.findByUniqueId(id);
+		System.out.println(o.getUniqueId());
+		if(o.getStatus().equals(OrderStatus.PROCESSING)) {
+			o.setStatus(OrderStatus.IN_PREPARATION);
+		}
+		else if(o.getStatus().equals(OrderStatus.IN_PREPARATION)) {
+			o.setStatus(OrderStatus.AWAITING_SUPPLIER);
+		}
+		else {
+			return Response.status(Response.Status.BAD_REQUEST).entity("Nije moguce azurirati narudzbinu").build();
+		}	
+		
+		BuyerDAOImpl buyDAO = (BuyerDAOImpl) ctx.getAttribute("buyerDAO");
+		Buyer b = buyDAO.findByUsername(o.getBuyer().getUsername());
+		Collection<Order> orders = b.getOrders();
+		for(Order or : orders) {
+			if(or.getUniqueId().equals(id)) {
+				if(or.getStatus().equals(OrderStatus.PROCESSING))
+					or.setStatus(OrderStatus.IN_PREPARATION);
+				else if(or.getStatus().equals(OrderStatus.IN_PREPARATION))
+					or.setStatus(OrderStatus.AWAITING_SUPPLIER);
+			}
+				
+		}
+		buyDAO.update(b);
+		orderDAO.update(o);
+		return Response.ok().entity("Narudzbina azurirana").build();
+		
+	}
 	
 	
 	@POST

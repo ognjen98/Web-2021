@@ -8,6 +8,15 @@
     "dateOfBirth" : 1661983200000,
     "role" : "MANAGER"
   },
+  "mana" : {
+    "username" : "mana",
+    "password" : "123",
+    "name" : "kadad",
+    "surname" : "qoeqpeo",
+    "gender" : "FEMALE",
+    "dateOfBirth" : 1613084400000,
+    "role" : "MANAGER"
+  },
   "supplier" : {
     "username" : "supplier",
     "password" : "123",
@@ -35,6 +44,15 @@
     "dateOfBirth" : 1665007200000,
     "role" : "MANAGER"
   },
+  "mani" : {
+    "username" : "mani",
+    "password" : "123",
+    "name" : "Mani",
+    "surname" : "Jovci",
+    "gender" : "FEMALE",
+    "dateOfBirth" : 1661983200000,
+    "role" : "MANAGER"
+  },
   "manager2" : {
     "username" : "manager2",
     "password" : "123",
@@ -48,8 +66,8 @@
     "username" : "user",
     "password" : "123",
     "name" : "User",
-    "surname" : "Savic",
-    "gender" : "FEMALE",
+    "surname" : "Civcic",
+    "gender" : "MALE",
     "dateOfBirth" : 1613084400000,
     "role" : "BUYER"
   }

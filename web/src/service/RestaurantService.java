@@ -88,7 +88,6 @@ public class RestaurantService {
 			@FormDataParam("resName") String resName,
 			@FormDataParam("location") String location,
 			@FormDataParam("type") String type,
-			@FormDataParam("grade") String grade,
 			@FormDataParam("file") InputStream fileInputStream,
             @FormDataParam("file") FormDataContentDisposition cdh) throws URISyntaxException {
 		//RestaurantDTO dto = jsonPart.getValueAs(RestaurantDTO.class);
@@ -101,14 +100,14 @@ public class RestaurantService {
 		String uploadedFileLocation = ctx.getRealPath("/data/images/")+fileName;
 		String imgPath = "http://localhost:8082/web/data/images/" + fileName;
 		System.out.println(imgPath);
-//		Location loc = parse(location);
-		Location loc = new Location();
-		Address add = new Address();
-		add.setCity(location);
-		loc.setAddress(add);
+		Location loc = parse(location);
+//		Location loc = new Location();
+//		Address add = new Address();
+//		add.setCity(location);
+//		loc.setAddress(add);
 		RestaurantType t = getType(type);
 		RestaurantDAOImpl restaurantDAO = (RestaurantDAOImpl) ctx.getAttribute("restaurantDAO");
-		Restaurant restaurant = new Restaurant(resName,t, RestaurantStatus.OPENED, loc, imgPath, Double.parseDouble(grade));
+		Restaurant restaurant = new Restaurant(resName,t, RestaurantStatus.OPENED, loc, imgPath, 0.0);
 		ManagerDAOImpl managerDAO = (ManagerDAOImpl) ctx.getAttribute("managerDAO");
 		Manager man = managerDAO.findById(manager);
 		man.setRestaurant(restaurant);
@@ -336,11 +335,13 @@ private QuantityType checkQuantity(String type) {
 		Address add = new Address();
 		Location loc = new Location();
 		String[] parts = location.split(",");
-		add.setStreetName(parts[0]);
-		add.setNumber(parts[1]);
-		add.setCity(parts[2]);
-		add.setZipCode(parts[3]);
+		add.setStreetName(parts[0].trim());
+		add.setNumber(parts[1].trim());
+		add.setCity(parts[2].trim());
+		add.setZipCode(parts[3].trim());
 		loc.setAddress(add);
+		loc.setLatitude(Double.parseDouble(parts[4]));
+		loc.setLongitude(Double.parseDouble(parts[5]));
 		return loc;
 	}
 	

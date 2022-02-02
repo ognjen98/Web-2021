@@ -100,5 +100,61 @@
     },
     "image" : "http://localhost:8082/web/data/images/99ceb19a-ba9c-4878-a1e0-51da2b6c4d71.png",
     "grade" : 0.0
+  },
+  "4" : {
+    "id" : 4,
+    "name" : "Sokol",
+    "type" : "MEXICAN",
+    "articles" : [ {
+      "id" : null,
+      "name" : "Pire",
+      "price" : 200.0,
+      "type" : "FOOD",
+      "restaurant" : null,
+      "quantity" : "GR",
+      "description" : "dobar",
+      "image" : "http://localhost:8082/web/data/images/71e4357e-700d-4185-aa27-ef7a147d0113.png"
+    }, {
+      "id" : null,
+      "name" : "Supa",
+      "price" : 100.0,
+      "type" : "DRINK",
+      "restaurant" : null,
+      "quantity" : "ML",
+      "description" : "lepa",
+      "image" : "http://localhost:8082/web/data/images/920142b3-3d26-48bf-89f3-a446c309a147.png"
+    } ],
+    "status" : "OPENED",
+    "location" : {
+      "longitude" : null,
+      "latitude" : null,
+      "address" : {
+        "streetName" : null,
+        "number" : null,
+        "city" : "tuzla",
+        "zipCode" : null
+      }
+    },
+    "image" : "http://localhost:8082/web/data/images/5acd8a35-26b4-4444-a61d-2aa3e399d23b.jpg",
+    "grade" : 0.0
+  },
+  "5" : {
+    "id" : 5,
+    "name" : "Dodik",
+    "type" : "FAST_FOOD",
+    "articles" : [ ],
+    "status" : "OPENED",
+    "location" : {
+      "longitude" : 25.0,
+      "latitude" : 22.0,
+      "address" : {
+        "streetName" : "Knez Mihailova",
+        "number" : "25",
+        "city" : "Beograd",
+        "zipCode" : "11000"
+      }
+    },
+    "image" : "http://localhost:8082/web/data/images/e30d3deb-47ae-432a-9c9b-6103fbf16650.png",
+    "grade" : 0.0
   }
 }
